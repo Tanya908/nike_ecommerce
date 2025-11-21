@@ -1,65 +1,94 @@
 import Image from "next/image";
+import Card from "@/components/Card";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
+const featuredShoes = [
+  {
+    title: "Air Max 270",
+    description: "Breathable mesh with responsive Air cushioning for all-day wear.",
+    price: "$159.99",
+    variantLabel: "Men's Shoes",
+    badge: "New",
+    imageSrc: "/trending-1.png",
+  },
+  {
+    title: "Air Jordan 1 Retro",
+    description: "Heritage high-top with premium leather and bold color blocking.",
+    price: "$189.99",
+    variantLabel: "Women's Shoes",
+    badge: "Trending",
+    imageSrc: "/trending-2.png",
+  },
+  {
+    title: "Nike Pegasus Trail 4",
+    description: "Trail-ready traction meets soft React foam for smooth runs.",
+    price: "$139.99",
+    variantLabel: "Kids' Shoes",
+    badge: "Popular",
+    imageSrc: "/trending-3.png",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-[var(--color-light-200)] text-[var(--color-dark-900)]">
+      <Navbar />
+
+      <main className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-12 md:px-6 lg:px-8">
+        <section className="grid grid-cols-1 gap-10 rounded-3xl bg-[var(--color-light-100)] p-8 shadow-sm md:grid-cols-2 md:items-center md:p-12">
+          <div className="space-y-6">
+            <p className="text-[var(--text-caption)] font-medium uppercase tracking-[0.08em] text-[var(--color-dark-700)]">
+              Featured Drop
+            </p>
+            <h1 className="text-4xl font-semibold leading-tight text-[var(--color-dark-900)] md:text-5xl">
+              Elevate your stride with the latest Nike essentials
+            </h1>
+            <p className="text-lg leading-7 text-[var(--color-dark-700)]">
+              Explore breathable meshes, responsive Air cushioning, and statement silhouettes designed to move with you.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="rounded-full bg-[var(--color-dark-900)] px-6 py-3 text-[var(--text-caption)] font-medium text-[var(--color-light-100)] transition-colors hover:bg-black">
+                Shop New Arrivals
+              </button>
+              <button className="rounded-full border border-[var(--color-light-300)] px-6 py-3 text-[var(--text-caption)] font-medium text-[var(--color-dark-900)] transition-colors hover:border-[var(--color-dark-900)]">
+                View Collections
+              </button>
+            </div>
+          </div>
+          <div className="relative flex justify-center">
+            <div className="relative h-[260px] w-full max-w-md overflow-hidden rounded-3xl bg-[var(--color-light-200)] md:h-[340px]">
+              <Image
+                src="/hero-shoe.png"
+                alt="Nike shoe display"
+                fill
+                className="object-contain"
+                priority
+                sizes="(min-width: 1024px) 400px, (min-width: 768px) 360px, 100vw"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[var(--text-caption)] font-medium uppercase tracking-[0.08em] text-[var(--color-dark-700)]">Trending now</p>
+              <h2 className="text-3xl font-semibold text-[var(--color-dark-900)]">Fresh picks</h2>
+            </div>
+            <button className="hidden rounded-full border border-[var(--color-light-300)] px-4 py-2 text-[var(--text-caption)] font-medium text-[var(--color-dark-900)] transition-colors hover:border-[var(--color-dark-900)] md:inline-flex">
+              View all
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {featuredShoes.map((shoe) => (
+              <Card key={shoe.title} {...shoe} />
+            ))}
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
