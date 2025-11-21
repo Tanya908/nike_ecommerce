@@ -1,80 +1,79 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export type CardProps = {
-  title: string;
-  description: string;
-  price?: string;
-  variantLabel?: string;
-  badge?: string;
-  imageSrc: string;
-  imageAlt?: string;
-  href?: string;
+export type BadgeTone = "red" | "green" | "orange";
+
+export interface CardProps {
+    title: string;
+    description?: string;
+    subtitle?: string;
+    meta?: string | string[];
+    imageSrc: string;
+    imageAlt?: string;
+    price?: string | number;
+    href?: string;
+    badge?: { label: string; tone?: BadgeTone };
+    className?: string;
+}
+
+const toneToBg: Record<BadgeTone, string> = {
+    red: "text-[--color-red]",
+    green: "text-[--color-green]",
+    orange: "text-[--color-orange]",
 };
 
 export default function Card({
-  title,
-  description,
-  price,
-  variantLabel,
-  badge,
-  imageSrc,
-  imageAlt = title,
-  href = "#",
-}: CardProps) {
-  return (
-    <article className="flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-[var(--color-light-300)] bg-[var(--color-light-100)] shadow-sm transition-shadow hover:shadow-lg">
-      <div className="relative h-72 w-full bg-[var(--color-light-200)]">
-        {badge && (
-          <span className="absolute left-4 top-4 rounded-full bg-[var(--color-orange)] px-3 py-1 text-[var(--text-caption)] text-[var(--color-light-100)]">
-            {badge}
-          </span>
-        )}
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-contain"
-          sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 100vw"
-          priority
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-3 px-5 py-4">
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-1">
-            <h3 className="text-[var(--text-heading-3)] font-medium leading-[var(--text-heading-3--line-height)] text-[var(--color-dark-900)]">
-              {title}
-            </h3>
-            <p className="text-[var(--text-body)] leading-[var(--text-body--line-height)] text-[var(--color-dark-700)]">
-              {description}
-            </p>
-            {variantLabel && (
-              <p className="text-[var(--text-caption)] font-medium leading-[var(--text-caption--line-height)] text-[var(--color-dark-500)]">
-                {variantLabel}
-              </p>
-            )}
-          </div>
-          {price && (
-            <span className="text-[var(--text-body)] font-medium text-[var(--color-dark-900)]">{price}</span>
-          )}
-        </div>
-        <Link
-          href={href}
-          className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-[var(--color-dark-900)] px-4 py-2 text-[var(--text-caption)] font-medium text-[var(--color-light-100)] transition-colors hover:bg-black"
+                                 title,
+                                 description,
+                                 subtitle,
+                                 meta,
+                                 imageSrc,
+                                 imageAlt = title,
+                                 price,
+                                 href,
+                                 badge,
+                                 className = "",
+                             }: CardProps) {
+    const displayPrice =
+        price === undefined ? undefined : typeof price === "number" ? `$${price.toFixed(2)}` : price;
+    const content = (
+        <article
+            className={`group rounded-xl bg-light-100 ring-1 ring-light-300 transition-colors hover:ring-dark-500 ${className}`}
         >
-          View Details
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-4 w-4"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
+            <div className="relative aspect-square overflow-hidden rounded-t-xl bg-light-200">
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) 300px, (min-width: 640px) 45vw, 90vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+            </div>
+            <div className="p-4">
+                <div className="mb-1 flex items-baseline justify-between gap-3">
+                    <h3 className="text-heading-3 text-dark-900">{title}</h3>
+                    {displayPrice && <span className="text-body-medium text-dark-900">{displayPrice}</span>}
+                </div>
+                {description && <p className="text-body text-dark-700">{description}</p>}
+                {subtitle && <p className="text-body text-dark-700">{subtitle}</p>}
+                {meta && (
+                    <p className="mt-1 text-caption text-dark-700">
+                        {Array.isArray(meta) ? meta.join(" • ") : meta}
+                    </p>
+                )}
+            </div>
+        </article>
+    );
+
+    return href ? (
+        <Link
+            href={href}
+            aria-label={title}
+            className="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-dark-500]"
+        >
+            {content}
         </Link>
-      </div>
-    </article>
-  );
+    ) : (
+        content
+    );
 }
