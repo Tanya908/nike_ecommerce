@@ -1,62 +1,154 @@
-import React from "react";
-import Card from "@/components/Card";
+import Image from "next/image";
+import Card, { CardProps } from "@/components/Card";
+import PromoSection from "@/components/PromoSection";
+import Button from "@/components/Button";
 
-
-
-
-const products = [
+const bestOfAirMax: CardProps[] = [
     {
-        id: 1,
-        title: "Air Max Pulse",
+        title: "Nike Air Force 1 '07",
         subtitle: "Men's Shoes",
-        meta: "6 Colour",
-        price: 149.99,
-        imageSrc: "/shoes/shoe-1.jpg",
-        badge: { label: "Best Seller", tone: "red" as const },
+        meta: "1 Colour",
+        price: 89.99,
+        imageSrc: "/shoes/shoe-10.avif",
     },
     {
-        id: 2,
-        title: "Air Zoom Pegasus",
+        title: "Nike Court Vision Low",
         subtitle: "Men's Shoes",
-        meta: "4 Colour",
-        price: 129.99,
-        imageSrc: "/shoes/shoe-2.webp",
-        badge: { label: "Extra 20% off", tone: "green" as const },
+        meta: "1 Colour",
+        price: 55.99,
+        imageSrc: "/shoes/shoe-7.avif",
     },
     {
-        id: 3,
-        title: "InfinityRN 4",
-        subtitle: "Men's Shoes",
-        meta: "6 Colour",
-        price: 159.99,
-        imageSrc: "/shoes/shoe-3.webp",
-        badge: { label: "Extra 10% off", tone: "green" as const },
-    }
+        title: "Nike Air Max 90 LTR",
+        subtitle: "Women's Shoes",
+        meta: "1 Colour",
+        price: 124.99,
+        imageSrc: "/shoes/shoe-9.avif",
+    },
 ];
 
-const Home = () => {
-    return (
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <section aria-labelledby="latest" >
-                <h2 id="latest" className="mb-6 text-heading-3 text-dark-900">
-                    Latest shoes
-                </h2>
+type TrendingPromo = {
+    title: string;
+    description?: string;
+    imageSrc: string;
+    btn?: string;
+};
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {products.map((p) => (
-                        <Card
-                            key={p.id}
-                            title={p.title}
-                            subtitle={p.subtitle}
-                            meta={p.meta}
-                            imageSrc={p.imageSrc}
-                            price={p.price}
-                            badge={p.badge} description={""}                        />
+const trendingPromos: TrendingPromo[] = [
+    {
+        title: "Nike Air Max Pulse",
+        description: "Extreme comfort. Hyper durable. Max volume.",
+        imageSrc: "/trending-1.png",
+        btn: "Shop Now",
+    },
+    {
+        title: "Nike Force 1 LE",
+        imageSrc: "/trending-2.png",
+    },
+    {
+        title: "Air Jordan 1 Retro Low LE",
+        imageSrc: "/trending-3.png",
+    },
+];
+
+export default function Home() {
+    return (
+        <main className="bg-light-100">
+            <PromoSection
+                bgSrc="/hero-bg.png"
+                imageSrc="/hero-shoe.png"
+                eyebrow="Bold & Sporty"
+                title="Style That Moves With You."
+                description="Not just style, but comfort. Footwear that effortlessly adapts to your movement."
+                btnLabel="Find your shoe"
+                btnVariant="dark"
+
+            />
+
+            <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+                <h2 className="text-heading-3 text-dark-900">Best of Air Max</h2>
+                <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {bestOfAirMax.map((product) => (
+                        <Card key={product.title} {...product}  />
                     ))}
                 </div>
             </section>
+
+            <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+                <h2 className="text-heading-3 text-dark-900">Trending Now</h2>
+
+                {/* TOP HERO (wide) */}
+                <article className="relative mt-8 overflow-hidden  bg-dark-900">
+                    <div className="relative h-[220px] sm:h-[320px] lg:h-[420px]">
+                        <Image
+                            src= "/trending-1.png"
+                            alt={trendingPromos[0].title}
+                            fill
+                            sizes="(min-width: 1024px) 100vw, 100vw"
+                            className="object-cover"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-dark-900/80 via-dark-900/60 to-transparent" />
+                    </div>
+                    <div className="absolute left-6 top-1/5 space-y-2 text-light-100 sm:left-10">
+
+                        <h3 className="text-heading-2 leading-tight">
+                            {trendingPromos[0].title}
+                        </h3>
+
+                        {trendingPromos[0].description && (
+                        <p className="text-lead text-light-200 max-w-xl">
+                            {trendingPromos[0].description }
+                        </p>
+                        )}
+
+                        {trendingPromos[0].btn && (
+                        <Button  variant="light" >
+                            {trendingPromos[1].title}
+                        </Button>
+                        )}
+                    </div>
+                </article>
+
+                {/* BOTTOM 2 CARDS (50/50) */}
+                <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {trendingPromos.slice(1, 3).map((promo) => (
+                        <article
+                            key={promo.title}
+                            className="relative overflow-hidden  bg-light-200"
+                            aria-label={promo.title}
+                        >
+                            <div className="relative aspect-[16/9]">
+                                <Image
+                                    src={promo.imageSrc}
+                                    alt={promo.title}
+                                    fill
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-dark-900/10 to-transparent" />
+                            </div>
+
+                            <div className="absolute bottom-4 left-4 space-y-2 text-light-100">
+                                <h4 className="text-heading-3">{promo.title}</h4>
+                            </div>
+
+
+
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <PromoSection
+                imageSrc="/feature.png"
+                eyebrow="Bold & Sporty"
+                title="Run Faster. Feel Lighter."
+                description="Engineered for speed and everyday comfort."
+                btnLabel="Shop now"
+                btnVariant="dark"
+                noBottomPadding
+            />
         </main>
     );
-};
-
-export default Home;
+}
