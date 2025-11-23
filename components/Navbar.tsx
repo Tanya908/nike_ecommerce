@@ -17,10 +17,10 @@ export type NavbarProps = {
 };
 
 const defaultLinks: NavLink[] = [
-  { label: "Men", href: "#men" },
-  { label: "Women", href: "#women" },
-  { label: "Kids", href: "#kids" },
-  { label: "Collections", href: "#collections" },
+  { label: "Men", href: "/products?gender=men" },
+  { label: "Women", href: "/products?gender=women" },
+  { label: "Kids", href: "/products?gender=kids" },
+  { label: "Collections", href: "/products" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -41,7 +41,7 @@ export default function Navbar({
     <header className="w-full  bg-light-100">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
         <div className="flex items-center gap-3">
-          <Link href="/public" className="flex items-center" aria-label="Home">
+          <Link href="/" className="flex items-center" aria-label="Home">
             <Image src="/logoBlack.svg" alt={logoAlt} width={32} height={32} priority />
           </Link>
         </div>

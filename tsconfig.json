@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "query-string": ["./lib/vendor/query-string"]
     }
   },
   "include": [

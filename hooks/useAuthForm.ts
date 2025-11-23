@@ -38,6 +38,8 @@ export function useAuthForm({ variant }: Params) {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
+        // Reset when switching between sign-in and sign-up flows.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setValues(initialValues);
         setFieldErrors({});
         setFormError("");
