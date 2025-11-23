@@ -5,13 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1965ce2-dea8-4378-b691-f86c5f1db1f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/hooks/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useAuthForm.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Arrow.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025,_18_08_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025,_18_08_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025,_18_10_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025,_18_10_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025__18_08__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2025__18_10__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-in/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AuthForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AuthForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/products/ProductsClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/products/ProductsClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/products/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/products/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CardBadge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CardBadge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Filters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Filters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Sort.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Sort.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +72,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#6 on codex/build-fully-functional-prod…-page",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
