@@ -25,10 +25,10 @@ export default function Sort() {
     };
 
     return (
-        <label className="flex items-center gap-2 text-body text-dark-900">
+        <label className="flex items-center gap-8 text-body text-dark-900">
             <span className="whitespace-nowrap">Sort By</span>
             <select
-                className="rounded-full border border-light-300 bg-light-100 px-3 py-2 text-body text-dark-900 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-dark-500"
+                className="bg-transparent border-0 p-0 m-0 text-body text-dark-900 shadow-none outline-none focus:outline-none focus:ring-0 focus-visible:ring-0"
                 value={selected}
                 onChange={(event) => handleChange(event.target.value)}
                 aria-label="Sort products"

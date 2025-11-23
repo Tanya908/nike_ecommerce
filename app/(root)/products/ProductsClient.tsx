@@ -158,20 +158,13 @@ export default function ProductsClient({ products, groups = defaultGroups }: Pro
         router.push(buildQueryUrl(pathname, queryString), { scroll: false });
     };
 
-    const categoryLinks = [
-        { label: "Men", href: "/products?gender=men" },
-        { label: "Women", href: "/products?gender=women" },
-        { label: "Kids", href: "/products?gender=kids" },
-        { label: "New & Featured", href: "/products" },
-    ];
-
     return (
-        <div className="lg:grid lg:grid-cols-[280px,1fr] lg:gap-8">
-            <div className="lg:pt-2">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start">
+            <div className="w-full md:w-[280px] md:shrink-0 md:pt-2">
                 <Filters groups={groups} />
             </div>
 
-            <div className="space-y-6 lg:space-y-8">
+            <div className="min-w-0 flex-1 space-y-6 lg:space-y-8">
                 <div className="flex flex-col gap-3 border-b border-light-300 pb-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="space-y-1">
                         <nav className="flex items-center gap-2 text-caption text-dark-700" aria-label="Breadcrumb">
@@ -179,21 +172,6 @@ export default function ProductsClient({ products, groups = defaultGroups }: Pro
                             <span aria-hidden>/</span>
                             <span className="text-dark-900">Products</span>
                         </nav>
-                        <div className="flex flex-wrap items-center gap-2 text-caption text-dark-700">
-                            {categoryLinks.map((category) => (
-                                <Link
-                                    key={category.label}
-                                    href={category.href}
-                                    className="rounded-full px-3 py-1 text-caption text-dark-700 transition hover:bg-light-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dark-500"
-                                >
-                                    {category.label}
-                                </Link>
-                            ))}
-                        </div>
-                        <div>
-                            <h1 className="text-heading-3 text-dark-900">New ({sortedProducts.length})</h1>
-                            <p className="text-body text-dark-700">The latest drops and essentials tailored for your run.</p>
-                        </div>
                     </div>
                     <div className="flex items-center justify-between gap-4 lg:justify-end">
                         <Sort />
@@ -238,7 +216,6 @@ export default function ProductsClient({ products, groups = defaultGroups }: Pro
                                     key={product.id}
                                     title={product.title}
                                     description={product.description}
-                                    subtitle={product.subtitle}
                                     meta={[formatColors(product.colors), heightLabel(product.height)]}
                                     price={product.price}
                                     imageSrc={product.imageSrc}

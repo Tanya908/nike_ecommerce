@@ -7,7 +7,6 @@ export type BadgeTone = "red" | "green" | "orange";
 export interface CardProps {
     title: string;
     description?: string;
-    subtitle?: string;
     meta?: string | string[];
     imageSrc: string;
     imageAlt?: string;
@@ -21,7 +20,6 @@ export interface CardProps {
 export default function Card({
                                  title,
                                  description,
-                                 subtitle,
                                  meta,
                                  imageSrc,
                                  imageAlt = title,
@@ -59,7 +57,6 @@ export default function Card({
                     {displayPrice && <span className="text-body-medium text-dark-900">{displayPrice}</span>}
                 </div>
                 {description && <p className="text-body text-dark-700">{description}</p>}
-                {subtitle && <p className="text-body text-dark-700">{subtitle}</p>}
                 {meta && (
                     <p className="mt-1 text-caption text-dark-700">
                         {Array.isArray(meta) ? meta.join(" • ") : meta}

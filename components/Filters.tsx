@@ -41,9 +41,7 @@ function FilterGroupSection({ group, openState, onToggleOpen, onToggleValue, act
                 aria-controls={`${group.key}-options`}
             >
                 <span>{group.label}</span>
-                <span aria-hidden className={`transform transition-transform ${isOpen ? "rotate-0" : "rotate-90"}`}>
-                    ▸
-                </span>
+                <img src="/Arrow.svg" alt="arrow" aria-hidden className={`transform transition-transform ${isOpen ? "rotate-0" : "rotate-180"}`}/>
             </button>
 
             <div id={`${group.key}-options`} className={isOpen ? "mt-4 space-y-2" : "hidden"}>
@@ -146,7 +144,7 @@ export default function Filters({ groups }: FiltersProps) {
                 <span className="text-caption text-dark-700">{totalActive} selected</span>
             </div>
 
-            <div className="hidden rounded-2xl border border-light-300 bg-light-100 p-6 shadow-sm lg:sticky lg:top-28 lg:block">
+            <div className="hidden bg-light-100 p-6  lg:sticky lg:top-28 lg:block">
                 <div className="mb-4 flex items-center justify-between">
                     <h2 className="text-body-medium text-dark-900">Filter By</h2>
                     <button

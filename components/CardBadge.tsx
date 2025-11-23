@@ -21,7 +21,7 @@ export default function CardBadge({
         <span
             className={[
                 "text-footnote items-center rounded-full bg-light-100 shadow-sm " +
-                "px-3 py-1.5 sm:text-body sm:px-4 sm:py-2 lg:text-body lg:px-5 lg:py-2.5 ",
+                "px-3 py-1.5 sm:px-4 sm:py-2 lg:px-5  ",
                 toneToText[tone],
                 className,
             ].join(" ")}
