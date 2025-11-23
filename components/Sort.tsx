@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { buildQueryUrl, updateQueryParams } from "@/lib/utils/query";
+import { buildQueryUrl, updateQueryParams } from "lib/utils/query";
 
 const sortOptions = [
     { value: "featured", label: "Featured" },

@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { FilterGroup, FilterKey } from "@/app/(root)/products/data";
-import { buildQueryUrl, parseMultiValueParam, removeQueryParams, toggleArrayValue } from "@/lib/utils/query";
+import { FilterGroup, FilterKey } from "../app/(root)/products/data";
+import { buildQueryUrl, parseMultiValueParam, removeQueryParams, toggleArrayValue } from "../lib/utils/query";
+
 
 interface FiltersProps {
     groups: FilterGroup[];
@@ -132,8 +133,8 @@ export default function Filters({ groups }: FiltersProps) {
     );
 
     return (
-        <aside className="lg:w-64 lg:flex-shrink-0" aria-label="Filters">
-            <div className="mb-4 flex items-center justify-between lg:hidden">
+        <aside className="md:w-64 md:flex-shrink-0" aria-label="Filters">
+            <div className="mb-4 flex items-center justify-between md:hidden">
                 <button
                     type="button"
                     className="rounded-full border border-light-300 px-4 py-2 text-body-medium text-dark-900 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-dark-500"
@@ -144,7 +145,7 @@ export default function Filters({ groups }: FiltersProps) {
                 <span className="text-caption text-dark-700">{totalActive} selected</span>
             </div>
 
-            <div className="hidden bg-light-100 p-6  lg:sticky lg:top-28 lg:block">
+            <div className="hidden bg-light-100 p-6 md:sticky md:top-24 md:block">
                 <div className="mb-4 flex items-center justify-between">
                     <h2 className="text-body-medium text-dark-900">Filter By</h2>
                     <button
@@ -159,7 +160,7 @@ export default function Filters({ groups }: FiltersProps) {
             </div>
 
             {open && (
-                <div className="fixed inset-0 z-40 flex lg:hidden" role="presentation">
+                <div className="fixed inset-0 z-40 flex md:hidden" role="presentation">
                     <div className="relative h-full w-11/12 max-w-sm overflow-y-auto bg-light-100 p-6 shadow-xl">
                         <div className="mb-4 flex items-center justify-between">
                             <h2 className="text-body-medium text-dark-900">Filters</h2>

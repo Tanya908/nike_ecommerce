@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,10 +19,6 @@
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["./*"],
-      "query-string": ["./lib/vendor/query-string"]
-    }
   },
   "include": [
     "next-env.d.ts",

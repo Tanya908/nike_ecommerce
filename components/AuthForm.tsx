@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SocialProviders from "./SocialProviders";
-import { useAuthForm } from "@/hooks/useAuthForm";
+import { useAuthForm } from "hooks/useAuthForm";
 
 type AuthFormProps = {
     variant: "sign-in" | "sign-up";

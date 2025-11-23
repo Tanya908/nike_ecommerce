@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import CardBadge from "@/components/CardBadge";
+import CardBadge from "components/CardBadge";
 
 export type BadgeTone = "red" | "green" | "orange";
 

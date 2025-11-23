@@ -4,11 +4,12 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import Card from "@/components/Card";
-import Filters from "@/components/Filters";
-import Sort from "@/components/Sort";
+
 import { FilterGroup, FilterKey, Gender, Product, ShoeHeight, filterGroups as defaultGroups, priceRanges } from "./data";
-import { buildQueryUrl, parseMultiValueParam, removeQueryParams, toggleArrayValue } from "@/lib/utils/query";
+import { buildQueryUrl, parseMultiValueParam, removeQueryParams, toggleArrayValue } from "lib/utils/query";
+import Card from "components/Card";
+import Filters from "components/Filters";
+import Sort from "components/Sort";
 
 interface ProductsClientProps {
     products: Product[];
@@ -160,7 +161,7 @@ export default function ProductsClient({ products, groups = defaultGroups }: Pro
 
     return (
         <div className="flex flex-col gap-8 md:flex-row md:items-start">
-            <div className="w-full md:w-[280px] md:shrink-0 md:pt-2">
+            <div className="w-full md:w-[280px]  md:shrink-0 md:pt-2">
                 <Filters groups={groups} />
             </div>
 

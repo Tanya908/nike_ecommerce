@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "@/components/Button";
+import Button from "components/Button";
 
 type PromoSectionProps = {
     bgSrc?: string;
@@ -42,7 +42,6 @@ export default function PromoSection({
             )}
 
             <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pt-10 sm:px-6 lg:flex-row lg:items-center lg:px-8 lg:pt-16">
-                {/* text */}
                 <div className="relative z-10 flex-1 space-y-6">
                     <div className="space-y-4">
                         {eyebrow && <p className="text-lead text-red">{eyebrow}</p>}

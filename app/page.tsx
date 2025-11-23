@@ -1,26 +1,23 @@
 import Image from "next/image";
-import Card, { CardProps } from "@/components/Card";
-import PromoSection from "@/components/PromoSection";
-import Button from "@/components/Button";
+import Card, { CardProps } from "components/Card";
+import PromoSection from "components/PromoSection";
+import Button from "components/Button";
 
 const bestOfAirMax: CardProps[] = [
     {
         title: "Nike Air Force 1 '07",
-        subtitle: "Men's Shoes",
         meta: "1 Colour",
         price: 89.99,
         imageSrc: "/shoes/shoe-10.avif",
     },
     {
         title: "Nike Court Vision Low",
-        subtitle: "Men's Shoes",
         meta: "1 Colour",
         price: 55.99,
         imageSrc: "/shoes/shoe-7.avif",
     },
     {
         title: "Nike Air Max 90 LTR",
-        subtitle: "Women's Shoes",
         meta: "1 Colour",
         price: 124.99,
         imageSrc: "/shoes/shoe-9.avif",
