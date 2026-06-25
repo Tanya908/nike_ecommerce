@@ -6,10 +6,12 @@ import {filterGroups} from "../../data/filters.ts";
 import { useState } from "react";
 import type {SelectedFilters} from "../../types/product.ts";
 import {filterProducts} from "../../utils/filterProducts.ts";
+import {sortProducts} from "../../utils/sortProducts.ts";
 
 
 const Men = () => {
 
+    const [sortOption, setSortOption] = useState("Featured");
 
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
         gender: ["men"],
@@ -19,6 +21,7 @@ const Men = () => {
     });
 
     const filteredProducts = filterProducts(products, selectedFilters);
+    const sortedProducts = sortProducts(filteredProducts, sortOption);
 
     return (
         <div className="page-spacing my-8 flex gap-10">
@@ -30,11 +33,18 @@ const Men = () => {
             />
 
             <div className="flex-1">
-                <ProductsToolbar />
+                <ProductsToolbar
+                    sortOption={sortOption}
+                    setSortOption={setSortOption}
+                    breadcrumbs={[
+                        { label: "Home", to: "/" },
+                        { label: "Men" },
+                    ]}
+                />
 
-                <ProductsGrid products={filteredProducts} />
+                <ProductsGrid products={sortedProducts} />
             </div>
         </div>
-    )
+    );
 }
 export default Men

@@ -1,5 +1,10 @@
-import { useState } from "react";
+import {type Dispatch, type SetStateAction, useState} from "react";
 import { ChevronDown } from "lucide-react";
+
+type SortProps = {
+    sortOption: string;
+    setSortOption: Dispatch<SetStateAction<string>>;
+};
 
 const sortOptions = [
     "Featured",
@@ -8,9 +13,11 @@ const sortOptions = [
     "Price: Low → High",
 ];
 
-const Sort = () => {
+const Sort = ({
+                  sortOption,
+                  setSortOption,
+              }: SortProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState(sortOptions[0]);
 
     return (
         <div className="relative">
@@ -22,7 +29,7 @@ const Sort = () => {
                 <span className="text-body">Sort By</span>
 
                 <div className="flex items-center gap-2">
-                    <span className="text-body">{selected}</span>
+                    <span className="text-body">{sortOption}</span>
 
                     <ChevronDown
                         size={18}
@@ -40,12 +47,12 @@ const Sort = () => {
                             key={option}
                             type="button"
                             onClick={() => {
-                                setSelected(option);
+                                setSortOption(option);
                                 setIsOpen(false);
                             }}
                             className={`block w-full px-5 py-3 text-left transition-colors hover:bg-[var(--color-light-200)]
                                 ${
-                                selected === option
+                                sortOption === option
                                     ? "font-medium text-[var(--color-dark-900)]"
                                     : "text-[var(--color-dark-700)]"
                             }`}
