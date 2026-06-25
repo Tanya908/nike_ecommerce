@@ -1,5 +1,3 @@
-// src/data/filters.ts
-
 import type { FilterGroup, PriceRange } from "../types/product";
 
 export const priceRanges: PriceRange[] = [
@@ -73,6 +71,25 @@ export const filterGroups: FilterGroup[] = [
                 swatch: "linear-gradient(90deg,#ef4444,#f59e0b,#22c55e,#3b82f6,#8b5cf6)",
             },
         ],
+    },
+    {
+        key: "size",
+        label: "Size",
+        options: [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+        ].map((size) => ({
+            value: size,
+            label: size,
+        })),
     },
 
     {

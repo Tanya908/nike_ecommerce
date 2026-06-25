@@ -1,16 +1,32 @@
-import { useState } from "react";
+import {useState,type Dispatch,type SetStateAction} from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 import SidebarContent from "./SidebarContent";
-import type {FilterGroup} from "../../types/product.ts";
+import type {FilterGroup, SelectedFilters} from "../../types/product";
 
 type SidebarProps = {
     title: string;
     filters: FilterGroup[];
+
+    selectedFilters: SelectedFilters;
+    setSelectedFilters: Dispatch<SetStateAction<SelectedFilters>>;
 };
 
-const Sidebar = ({ title, filters }: SidebarProps) => {
+const Sidebar = ({
+                     title,
+                     filters,
+                     selectedFilters,
+                     setSelectedFilters,
+                 }: SidebarProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const handleClearAll = () => {
+        setSelectedFilters({
+            gender: [],
+            color: [],
+            price: [],
+            size: [],
+        });
+    };
     return (
         <>
             <button
@@ -25,6 +41,9 @@ const Sidebar = ({ title, filters }: SidebarProps) => {
                 <SidebarContent
                     title={title}
                     filters={filters}
+                    selectedFilters={selectedFilters}
+                    setSelectedFilters={setSelectedFilters}
+                    onClearAll={handleClearAll}
                 />
             </aside>
 
@@ -48,6 +67,9 @@ const Sidebar = ({ title, filters }: SidebarProps) => {
                         <SidebarContent
                             title={title}
                             filters={filters}
+                            selectedFilters={selectedFilters}
+                            setSelectedFilters={setSelectedFilters}
+                            onClearAll={handleClearAll}
                         />
                     </aside>
                 </div>

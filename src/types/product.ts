@@ -49,3 +49,10 @@ export type PriceRange = {
     min: number;
     max?: number;
 };
+
+export type SelectedFilters = {
+    gender: string[];
+    color: string[];
+    price: string[];
+    size: string[];
+};
