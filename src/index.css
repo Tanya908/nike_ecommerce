@@ -70,6 +70,11 @@
         font-size: var(--text-heading-1-md);
     }
 }
+@utility text-h2 {
+    font-size: var(--text-heading-2);
+    font-weight:var(--text-heading-2--font-weight);
+    line-height:var(--text-heading-2--line-height);
+}
 
 @utility text-h3 {
     font-size: var(--text-heading-3);

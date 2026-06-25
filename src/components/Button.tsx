@@ -10,8 +10,8 @@ const Button = ({
                     children,
                     ...props
                 }: ButtonProps) => {
-    const base =
-        "rounded-full px-4 py-2.5 text-body-medium transition hover:-translate-y-0.5";
+
+    const base = "rounded-full px-4 py-2.5 text-body-medium transition hover:-translate-y-0.5 cursor-pointer";
 
     const variants = {
         dark: "bg-[var(--color-dark-900)] text-[var(--color-light-100)]",

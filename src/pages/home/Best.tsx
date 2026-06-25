@@ -3,25 +3,36 @@ import Shoe10 from "../../assets/shoes/shoe-10.webp"
 import Shoe7 from "../../assets/shoes/shoe-7.webp"
 import Shoe9 from "../../assets/shoes/shoe-9.webp"
 
-
 const products: CardProps[] = [
     {
         title: "Nike Air Force 1 '07",
         meta: "1 Colour",
         price: 89.99,
         imageSrc: Shoe10,
+        badge: {
+            label: "New",
+            tone: "red",
+        },
     },
     {
         title: "Nike Court Vision Low",
         meta: "1 Colour",
         price: 55.99,
         imageSrc: Shoe7,
+        badge: {
+            label: "Best Seller",
+            tone: "green",
+        },
     },
     {
         title: "Nike Air Max 90 LTR",
         meta: "1 Colour",
         price: 124.99,
         imageSrc: Shoe9,
+        badge: {
+            label: "Limited",
+            tone: "orange",
+        },
     },
 ];
 
