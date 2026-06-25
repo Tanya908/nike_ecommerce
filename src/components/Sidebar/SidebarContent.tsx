@@ -18,6 +18,18 @@ const SidebarContent = ({
                         }: SidebarContentProps) => {
 
 
+    const toggleFilter = (
+        key: keyof SelectedFilters,
+        value: string,
+    ) => {
+        setSelectedFilters((prev) => ({
+            ...prev,
+            [key]: prev[key].includes(value)
+                ? prev[key].filter((item) => item !== value)
+                : [...prev[key], value],
+        }));
+    };
+
     return (
         <div className="my-8 page-spacing">
             <div className="mb-6 flex items-center justify-between">
@@ -49,6 +61,7 @@ const SidebarContent = ({
                                 <input
                                     type="checkbox"
                                     checked={selectedFilters[filter.key].includes(option.value)}
+                                    onChange={() => toggleFilter(filter.key, option.value)}
                                     className="h-4 w-4 cursor-pointer accent-[var(--color-dark-900)]"
                                 />
 

@@ -5,21 +5,25 @@ import {products} from "../../data/products.ts";
 import {filterGroups} from "../../data/filters.ts";
 import { useState } from "react";
 import type {SelectedFilters} from "../../types/product.ts";
+import {filterProducts} from "../../utils/filterProducts.ts";
 
 
 const Men = () => {
 
+
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
-        gender: [],
+        gender: ["men"],
+        size: [],
         color: [],
         price: [],
-        size:[],
     });
+
+    const filteredProducts = filterProducts(products, selectedFilters);
 
     return (
         <div className="page-spacing my-8 flex gap-10">
             <Sidebar
-                title="New (500)"
+                title={`New (${filteredProducts.length})`}
                 filters={filterGroups}
                 selectedFilters={selectedFilters}
                 setSelectedFilters={setSelectedFilters}
@@ -28,9 +32,7 @@ const Men = () => {
             <div className="flex-1">
                 <ProductsToolbar />
 
-                <ProductsGrid
-                    products={products}
-                />
+                <ProductsGrid products={filteredProducts} />
             </div>
         </div>
     )
