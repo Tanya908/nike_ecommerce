@@ -17,7 +17,8 @@
 
     --font-jost: "Jost", system-ui, -apple-system, "Segoe UI", "Roboto", "Arial", sans-serif;
 
-    --text-heading-1: 72px;
+    --text-heading-1: 60px;
+    --text-heading-1-md: 72px;
     --text-heading-1--line-height: 78px;
     --text-heading-1--font-weight: 700;
 
@@ -50,8 +51,32 @@
     --text-footnote--font-weight: 400;
 }
 
+@layer base {
+    html, body{
+        font-family: var(--font-jost);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        color: var(--color-dark-900);
+    }
+}
+
+@utility text-h1 {
+    font-size: var(--text-heading-1);
+    font-weight:var(--text-heading-1--font-weight);
+    line-height:var(--text-heading-1--line-height);
+
+    @variant lg {
+        font-size: var(--text-heading-1-md);
+    }
+}
 
 @layer utilities {
+
+    .page-spacing{
+        @apply px-4 md:px-6 lg:px-8
+    }
+
     .text-hover{
         @apply hover:text-[var(--color-dark-700)] active:text-[var(--color-dark-700)] transition-colors
     }

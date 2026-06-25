@@ -59,7 +59,7 @@ const policies = [
 const Footer = () => {
     return (
         <footer className="bg-[var(--color-dark-900)] text-[var(--color-light-100)]">
-            <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8 py-10">
+            <div className="mx-auto max-w-[1600px] page-spacing py-10">
 
                 <div className="grid grid-cols-1 gap-10 pb-10 md:grid-cols-3 lg:grid-cols-6">
                     <a href="/">

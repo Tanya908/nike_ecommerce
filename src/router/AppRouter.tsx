@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
+import Home from "../pages/home/Home.tsx";
 
 
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<div className="h-[50vh] bg-yellow-300">Home</div>} />
+            <Route path="/" element={<Home/>} />
         </Routes>
     );
 };

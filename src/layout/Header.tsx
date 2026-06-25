@@ -21,7 +21,7 @@ const Header = () => {
         <>
 
             <header className="fixed top-0 left-0 w-full bg-[var(--color-light-100)] z-50">
-                <div className="flex h-[72px] items-center justify-between px-4 md:px-6 lg:px-8 mx-auto max-w-[1600px]">
+                <div className="flex h-[72px] items-center justify-between mx-auto max-w-[1600px] page-spacing">
                     <a href="/" className="relative z-50 flex items-center">
                         <img src={Logo} alt="Nike" className="w-8 h-8" />
                     </a>
@@ -40,7 +40,7 @@ const Header = () => {
                             <a
                                 key={link.label}
                                 href={link.href}
-                                className="text-sm font-medium text-[var(--color-dark-900)] text-hover"
+                                className="text-sm font-medium text-hover"
                             >
                                 {link.label}
                             </a>
@@ -85,7 +85,7 @@ const Header = () => {
                             <a
                                 key={link.label}
                                 href={link.href}
-                                className="block py-3 text-base font-medium text-[var(--color-dark-900)]"
+                                className="block py-3 text-base font-medium "
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.label}
