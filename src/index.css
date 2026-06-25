@@ -71,6 +71,12 @@
     }
 }
 
+@utility text-h3 {
+    font-size: var(--text-heading-3);
+    font-weight:var(--text-heading-3--font-weight);
+    line-height:var(--text-heading-3--line-height);
+}
+
 @layer utilities {
 
     .page-spacing{
