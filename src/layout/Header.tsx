@@ -1,0 +1,115 @@
+import { useState } from "react";
+import Logo from "../assets/logo-black.svg";
+import { Twirl } from "hamburger-react";
+import { Search, ShoppingBag } from "lucide-react";
+
+const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [search, setSearch] = useState("");
+
+    const links = [
+        { label: "Men", href: "#" },
+        { label: "Women", href: "#" },
+        { label: "Kids", href: "#" },
+        { label: "Collections", href: "#" },
+        { label: "Contact", href: "#" },
+    ];
+
+    return (
+        <>
+
+            <header className="fixed top-0 left-0 w-full bg-[var(--color-light-100)] z-50">
+                <div className="flex h-[72px] items-center justify-between px-4 md:px-6 lg:px-8 mx-auto max-w-[1600px]">
+                    <a href="/" className="relative z-50 flex items-center">
+                        <img src={Logo} alt="Nike" className="w-8 h-8" />
+                    </a>
+
+                    <div className="md:hidden rounded-md hover:bg-[var(--color-light-200)] active:bg-[var(--color-light-200)] p-2 z-50">
+                        <Twirl
+                            toggled={isOpen}
+                            toggle={setIsOpen}
+                            size={24}
+                            color="#1f2937"
+                        />
+                    </div>
+
+                    <nav className="hidden md:flex items-center gap-10">
+                        {links.map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                className="text-sm font-medium text-[var(--color-dark-900)] text-hover"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </nav>
+
+                    <div className="hidden md:flex items-center gap-4">
+                        <div
+                            className={`flex items-center overflow-hidden rounded-full bg-[var(--color-light-200)] transition-all duration-300 
+                            ${isSearchOpen ? "w-64 px-3" : "w-10 justify-center"}`}
+                        >
+                            <button
+                                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                                className="flex h-10 w-10 items-center justify-center"
+                            >
+                                <Search size={20} />
+                            </button>
+
+                            <input
+                                type="search"
+                                placeholder="Search"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className={`bg-transparent outline-none text-sm transition-opacity duration-200 
+                                            ${isSearchOpen ? "w-full opacity-100" : "w-0 opacity-0 pointer-events-none"}`}
+                            />
+                        </div>
+
+                        <button className="flex items-center gap-2 text-hover">
+                            <ShoppingBag size={20} />
+                            <span>0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    className={`fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] bg-light-100 z-40 transition-transform duration-300 ease-in-out 
+                                md:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
+                >
+                    <div className="space-y-1 px-4 py-6">
+                        {links.map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                className="block py-3 text-base font-medium text-[var(--color-dark-900)]"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+
+                        <div className="mt-6 border-t border-[var(--color-light-300)] pt-6 flex flex-col gap-4 items-start text-left">
+                            <input
+                                type="search"
+                                placeholder="Search products..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="w-full rounded-full border border-[var(--color-light-300)] px-4 py-3 outline-none"
+                            />
+                            <button onClick={() => setIsOpen(false)}>My Cart (0)</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {/* Spacer */}
+            <div aria-hidden="true" className="h-[72px]" />
+        </>
+    );
+};
+
+export default Header;

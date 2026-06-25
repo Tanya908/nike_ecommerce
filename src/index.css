@@ -51,4 +51,8 @@
 }
 
 
-
+@layer utilities {
+    .text-hover{
+        @apply hover:text-[var(--color-dark-700)] active:text-[var(--color-dark-700)] transition-colors
+    }
+}
