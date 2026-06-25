@@ -10,7 +10,7 @@ const Header = () => {
     const [search, setSearch] = useState("");
 
     const links = [
-        { label: "Men", href: "#" },
+        { label: "Men", href: "/men" },
         { label: "Women", href: "#" },
         { label: "Kids", href: "#" },
         { label: "Collections", href: "#" },
