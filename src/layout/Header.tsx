@@ -11,8 +11,8 @@ const Header = () => {
 
     const links = [
         { label: "Men", href: "/men" },
-        { label: "Women", href: "#" },
-        { label: "Kids", href: "#" },
+        { label: "Women", href: "/women" },
+        { label: "Kids", href: "/kids" },
         { label: "Collections", href: "#" },
         { label: "Contact", href: "#" },
     ];

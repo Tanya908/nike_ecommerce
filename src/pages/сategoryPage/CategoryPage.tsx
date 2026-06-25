@@ -1,24 +1,31 @@
-import Sidebar from "../../components/Sidebar/Sidebar.tsx";
-import ProductsToolbar from "../../components/ProductsToolbar/ProductsToolBar.tsx";
-import ProductsGrid from "../../components/ProductsGrid/ProductsGrid.tsx";
-import {products} from "../../data/products.ts";
-import {filterGroups} from "../../data/filters.ts";
 import { useState } from "react";
-import type {SelectedFilters} from "../../types/product.ts";
+import type {Gender, SelectedFilters} from "../../types/product.ts";
 import {filterProducts} from "../../utils/filterProducts.ts";
 import {sortProducts} from "../../utils/sortProducts.ts";
+import {products} from "../../data/products.ts";
+import {filterGroups} from "../../data/filters.ts";
+import ProductsToolbar from "../../components/ProductsToolbar/ProductsToolBar.tsx";
+import ProductsGrid from "../../components/ProductsGrid/ProductsGrid.tsx";
+import Sidebar from "../../components/Sidebar/Sidebar.tsx";
 
+type CategoryPageProps = {
+    gender: Gender;
+    title: string;
+};
 
-const Men = () => {
-
+const CategoryPage = ({
+                          gender,
+                          title,
+                      }: CategoryPageProps) => {
     const [sortOption, setSortOption] = useState("Featured");
 
-    const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
-        gender: ["men"],
-        size: [],
-        color: [],
-        price: [],
-    });
+    const [selectedFilters, setSelectedFilters] =
+        useState<SelectedFilters>({
+            gender: [gender],
+            size: [],
+            color: [],
+            price: [],
+        });
 
     const filteredProducts = filterProducts(products, selectedFilters);
     const sortedProducts = sortProducts(filteredProducts, sortOption);
@@ -38,13 +45,16 @@ const Men = () => {
                     setSortOption={setSortOption}
                     breadcrumbs={[
                         { label: "Home", to: "/" },
-                        { label: "Men" },
+                        { label: title },
                     ]}
                 />
 
-                <ProductsGrid products={sortedProducts} />
+                <ProductsGrid
+                    products={sortedProducts}
+                />
             </div>
         </div>
     );
-}
-export default Men
+};
+
+export default CategoryPage;
