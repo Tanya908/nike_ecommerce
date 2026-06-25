@@ -1,8 +1,8 @@
 import Sidebar from "../../components/Sidebar/Sidebar.tsx";
-import {filterGroups} from "../../components/Sidebar/filterData.ts";
 import ProductsToolbar from "../../components/ProductsToolbar/ProductsToolBar.tsx";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid.tsx";
-import {products} from "../../components/ProductsGrid/data.ts";
+import {products} from "../../data/products.ts";
+import {filterGroups} from "../../data/filters.ts";
 
 const Men = () => {
     return (

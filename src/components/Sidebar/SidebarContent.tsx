@@ -1,4 +1,4 @@
-import type { FilterGroup } from "./Sidebar";
+import type {FilterGroup} from "../../types/product.ts";
 
 type SidebarContentProps = {
     title: string;
@@ -16,17 +16,17 @@ const SidebarContent = ({
             </h3>
 
             {filters.map((filter) => (
-                <div key={filter.title}>
+                <div key={filter.key}>
                     <div className="my-8 border-b border-[var(--color-light-300)]" />
 
                     <h3 className="mb-4 text-body-medium">
-                        {filter.title}
+                        {filter.label}
                     </h3>
 
                     <div className="space-y-3">
                         {filter.options.map((option) => (
                             <label
-                                key={option.label}
+                                key={option.value}
                                 className="flex cursor-pointer items-center gap-3"
                             >
                                 <input
@@ -34,15 +34,15 @@ const SidebarContent = ({
                                     className="h-4 w-4 cursor-pointer accent-[var(--color-dark-900)]"
                                 />
 
-                                {option.color && (
+                                {option.swatch && (
                                     <span
                                         className={`h-5 w-5 rounded-full ${
-                                            option.border
+                                            option.value
                                                 ? "border border-gray-300"
                                                 : ""
                                         }`}
                                         style={{
-                                            background: option.color,
+                                            background: option.swatch,
                                         }}
                                     />
                                 )}

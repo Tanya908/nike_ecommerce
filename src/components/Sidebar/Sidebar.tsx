@@ -1,15 +1,7 @@
 import { useState } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 import SidebarContent from "./SidebarContent";
-
-export type FilterGroup = {
-    title: string;
-    options: {
-        label: string;
-        color?: string;
-        border?: boolean;
-    }[];
-};
+import type {FilterGroup} from "../../types/product.ts";
 
 type SidebarProps = {
     title: string;
