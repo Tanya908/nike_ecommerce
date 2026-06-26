@@ -1,12 +1,20 @@
 import type { CartItem as CartItemType } from "../../types/cart";
 import { products } from "../../data/products";
 import { Trash2, Minus, Plus } from "lucide-react";
+import {useCart} from "../../context/CartContext.tsx";
 
 type CartItemProps = {
     item: CartItemType;
 };
 
 const CartItem = ({ item }: CartItemProps) => {
+
+    const {
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+    } = useCart();
+
     const product = products.find(
         (p) => p.id === item.productId
     );
@@ -38,11 +46,25 @@ const CartItem = ({ item }: CartItemProps) => {
 
                             <span className="text-body text-[var(--color-dark-600)]"> Quantity </span>
 
-                            <button> <Minus size={18} /> </button>
+                            <button
+                                className="cursor-pointer"
+                                onClick={() =>
+                                    decreaseQuantity(item.productId, item.size)
+                                }
+                            >
+                                <Minus size={18} />
+                            </button>
 
                             <span className="font-medium"> {item.quantity} </span>
 
-                            <button> <Plus size={18} /> </button>
+                            <button
+                                className="cursor-pointer"
+                                onClick={() =>
+                                    increaseQuantity(item.productId, item.size)
+                                }
+                            >
+                                <Plus size={18} />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -51,7 +73,14 @@ const CartItem = ({ item }: CartItemProps) => {
 
                     <p className="text-h3">${product.price.toFixed(2)}</p>
 
-                    <button className="text-[var(--color-red)] transition hover:text-red-700"> <Trash2 size={22} /></button>
+                    <button
+                        className="text-[var(--color-red)] transition hover:text-red-700 cursor-pointer"
+                        onClick={() =>
+                            removeFromCart(item.productId, item.size)
+                        }
+                    >
+                        <Trash2 size={22} />
+                    </button>
                 </div>
             </div>
         </article>

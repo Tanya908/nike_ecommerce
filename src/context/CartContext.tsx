@@ -21,6 +21,16 @@ type CartContextType = {
         size: string
     ) => void;
 
+    increaseQuantity: (
+        productId: string,
+        size: string
+    ) => void;
+
+    decreaseQuantity: (
+        productId: string,
+        size: string
+    ) => void;
+
     clearCart: () => void;
 };
 
@@ -33,7 +43,6 @@ type CartProviderProps = {
 export const CartProvider = ({
                                  children,
                              }: CartProviderProps) => {
-
     const [cartItems, setCartItems] = useState<CartItem[]>(() => {
         const savedCart = localStorage.getItem("cart");
 
@@ -47,9 +56,10 @@ export const CartProvider = ({
         );
     }, [cartItems]);
 
-    const addToCart = (productId: string, size: string) => {
-        console.log(productId, size);
-
+    const addToCart = (
+        productId: string,
+        size: string
+    ) => {
         setCartItems((prev) => [
             ...prev,
             {
@@ -75,6 +85,48 @@ export const CartProvider = ({
         );
     };
 
+    const increaseQuantity = (
+        productId: string,
+        size: string
+    ) => {
+        setCartItems((prev) =>
+            prev.map((item) =>
+                item.productId === productId &&
+                item.size === size
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1,
+                    }
+                    : item
+            )
+        );
+    };
+
+    const decreaseQuantity = (
+        productId: string,
+        size: string
+    ) => {
+        setCartItems((prev) =>
+            prev.flatMap((item) => {
+                if (
+                    item.productId === productId &&
+                    item.size === size
+                ) {
+                    if (item.quantity === 1) {
+                        return [];
+                    }
+
+                    return {
+                        ...item,
+                        quantity: item.quantity - 1,
+                    };
+                }
+
+                return item;
+            })
+        );
+    };
+
     const clearCart = () => {
         setCartItems([]);
     };
@@ -85,6 +137,8 @@ export const CartProvider = ({
                 cartItems,
                 addToCart,
                 removeFromCart,
+                increaseQuantity,
+                decreaseQuantity,
                 clearCart,
             }}
         >
