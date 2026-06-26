@@ -70,3 +70,9 @@ export type Review = {
 
     date: string;
 };
+
+export type CartItem = {
+    product: Product;
+    size: string;
+    quantity: number;
+};

@@ -7,8 +7,11 @@ import {useState} from "react";
 import Button from "../../components/Button.tsx";
 import Accordion from "./Accordion.tsx";
 import {reviews} from "../../data/reviews.ts";
+import {useCart} from "../../context/CartContext.tsx";
 
 const Product = () => {
+    const { addToCart } = useCart();
+
     const { id } = useParams();
 
     const product = products.find((item) => item.id === id);
@@ -100,6 +103,11 @@ const Product = () => {
 
                     <Button
                         disabled={!selectedSize}
+                        onClick={() => {
+                            if (!selectedSize) return;
+
+                            addToCart(product.id, selectedSize);
+                        }}
                         className="mt-8 w-full py-5"
                     >
                         Add to Cart
