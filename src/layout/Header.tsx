@@ -4,12 +4,22 @@ import { Twirl } from "hamburger-react";
 import { Search, ShoppingBag } from "lucide-react";
 import {Link} from "react-router-dom";
 import {useCart} from "../context/CartContext.tsx";
+import {products} from "../data/products.ts";
+import SearchDropdown from "../components/SearchDropdown.tsx";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+
     const [search, setSearch] = useState("");
+    const searchResults = products
+        .filter((product) =>
+            `${product.title} ${product.subtitle}`
+                .toLowerCase()
+                .includes(search.toLowerCase())
+        )
+        .slice(0, 5);
 
     const links = [
         { label: "Men", href: "/men" },
@@ -55,25 +65,38 @@ const Header = () => {
                     </nav>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <div
-                            className={`flex items-center overflow-hidden rounded-full bg-[var(--color-light-200)] transition-all duration-300 
+                        <div className="relative">
+                            <div
+                                className={`flex items-center overflow-hidden rounded-full bg-[var(--color-light-200)] transition-all duration-300 
                             ${isSearchOpen ? "w-64 px-3" : "w-10 justify-center"}`}
-                        >
-                            <button
-                                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                                className="flex h-10 w-10 items-center justify-center"
                             >
-                                <Search size={20} />
-                            </button>
+                                <button
+                                    onClick={() => setIsSearchOpen(!isSearchOpen)}
+                                    className="flex h-10 w-10 items-center justify-center"
+                                >
+                                    <Search size={20} />
+                                </button>
 
-                            <input
-                                type="search"
-                                placeholder="Search"
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                                className={`bg-transparent outline-none text-sm transition-opacity duration-200 
+                                <input
+                                    type="search"
+                                    placeholder="Search"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className={`bg-transparent outline-none text-sm transition-opacity duration-200 
                                             ${isSearchOpen ? "w-full opacity-100" : "w-0 opacity-0 pointer-events-none"}`}
-                            />
+                                />
+                            </div>
+
+                            {isSearchOpen && (
+                                <SearchDropdown
+                                    search={search}
+                                    results={searchResults}
+                                    onClose={() => {
+                                        setIsSearchOpen(false);
+                                        setSearch("");
+                                    }}
+                                />
+                            )}
                         </div>
 
                         <Link
