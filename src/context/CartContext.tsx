@@ -60,14 +60,34 @@ export const CartProvider = ({
         productId: string,
         size: string
     ) => {
-        setCartItems((prev) => [
-            ...prev,
-            {
-                productId,
-                size,
-                quantity: 1,
-            },
-        ]);
+        setCartItems((prev) => {
+            const existingItem = prev.find(
+                (item) =>
+                    item.productId === productId &&
+                    item.size === size
+            );
+
+            if (existingItem) {
+                return prev.map((item) =>
+                    item.productId === productId &&
+                    item.size === size
+                        ? {
+                            ...item,
+                            quantity: item.quantity + 1,
+                        }
+                        : item
+                );
+            }
+
+            return [
+                ...prev,
+                {
+                    productId,
+                    size,
+                    quantity: 1,
+                },
+            ];
+        });
     };
 
     const removeFromCart = (
