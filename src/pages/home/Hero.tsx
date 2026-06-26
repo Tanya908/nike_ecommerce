@@ -1,6 +1,7 @@
 import HeroShoe from "../../assets/hero-shoe.webp";
 import HeroBackground from "../../assets/hero-bg.webp";
 import Button from "../../components/Button.tsx";
+import {Link} from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -33,9 +34,11 @@ const Hero = () => {
                         </p>
                     </div>
 
-                    <Button>
-                        Shop Now
-                    </Button>
+                    <Link to="/collections">
+                        <Button>
+                            Shop Now
+                        </Button>
+                    </Link>
                 </div>
 
                 <div className="flex-1">

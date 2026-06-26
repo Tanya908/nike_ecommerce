@@ -10,17 +10,17 @@ const trendingPromos = [
         description: "Feel the unreal with the latest Air Max innovation.",
         imageSrc: TrendingHero,
         btn: "Shop Now",
-        to: "/",
+        to: "/collections",
     },
     {
         title: "Lifestyle",
         imageSrc: TrendingLeft,
-        to: "/",
+        to: "/collections",
     },
     {
         title: "Running",
         imageSrc: TrendingRight,
-        to: "/",
+        to: "/collections",
     },
 ];
 
