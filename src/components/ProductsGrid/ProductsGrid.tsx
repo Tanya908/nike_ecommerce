@@ -17,8 +17,9 @@ const ProductsGrid = ({ products }: ProductsGridProps) => {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
                 <ShoeCard
-                    key={product.title}
+                    key={product.id}
                     {...product}
+                    to={`/products/${product.id}`}
                 />
             ))}
         </div>

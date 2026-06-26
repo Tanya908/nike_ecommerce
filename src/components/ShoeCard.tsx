@@ -4,6 +4,7 @@ import CardBadge from "./CardBadge";
 export type BadgeTone = "red" | "green" | "orange";
 
 export type CardProps = {
+    id: string;
     title: string;
     imageSrc: string;
     price: number;

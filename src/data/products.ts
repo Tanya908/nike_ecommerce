@@ -20,7 +20,7 @@ export const products: Product[] = [
     {
         id: "air-force-1",
         title: "Nike Air Force 1 '07",
-        subtitle: "сategoryPage's Shoes",
+        subtitle: "Men's Shoes",
         description: "Classic everyday sneakers.",
         genders: ["men"],
         sizes: ["7", "8", "9", "10", "11", "12"],
