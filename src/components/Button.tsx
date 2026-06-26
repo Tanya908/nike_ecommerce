@@ -11,7 +11,7 @@ const Button = ({
                     ...props
                 }: ButtonProps) => {
 
-    const base = "rounded-full px-4 py-2.5 text-body-medium transition hover:-translate-y-0.5 cursor-pointer";
+    const base = "rounded-full px-4 py-2.5 text-body-medium transition";
 
     const variants = {
         dark: "bg-[var(--color-dark-900)] text-[var(--color-light-100)]",
@@ -20,7 +20,16 @@ const Button = ({
 
     return (
         <button
-            className={`${base} ${variants[variant]} ${className}`}
+            className={`
+        ${base}
+        ${variants[variant]}
+        ${
+                props.disabled
+                    ? "cursor-not-allowed opacity-50"
+                    : "cursor-pointer hover:-translate-y-0.5"
+            }
+        ${className}
+    `}
             {...props}
         >
             {children}

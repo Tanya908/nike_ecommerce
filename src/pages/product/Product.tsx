@@ -3,6 +3,8 @@ import { products } from "../../data/products";
 import CardBadge from "../../components/CardBadge";
 import Breadcrumbs from "../../components/ProductsToolbar/Breadcrumbs.tsx";
 import {adultSizes, kidsSizes} from "../../data/sizes.ts";
+import {useState} from "react";
+import Button from "../../components/Button.tsx";
 
 const Product = () => {
     const { id } = useParams();
@@ -20,6 +22,8 @@ const Product = () => {
     const sizes = product.genders.includes("kids")
         ? kidsSizes
         : adultSizes;
+
+    const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
     return (
         <section className="page-spacing py-12">
@@ -62,21 +66,34 @@ const Product = () => {
                     <p className="mt-2 font-medium text-green-700"> Extra 20% off with code SPORT </p>
 
                     <div className="mt-10">
-                        <h3 className="mb-5 text-body-medium"> Select Size </h3>
+                        <h3 className="mb-5 text-body-medium">
+                            Select Size
+                        </h3>
 
-                        <div className="grid grid-cols-5 gap-6">
-                            {sizes.map((size) => (
-                                <button
-                                    key={size}
-                                    className="rounded-lg border py-4 transition hover:border-black"
-                                >
-                                    {size}
-                                </button>
-                            ))}
+                        <div className="grid grid-cols-4 gap-3">
+                            {sizes.map((size) => {
+                                const isAvailable = product.sizes.includes(size);
+                                return (
+                                    <button
+                                        key={size}
+                                        disabled={!isAvailable}
+                                        onClick={() => setSelectedSize(size)}
+                                        className={`rounded-lg border py-4 transition ${ selectedSize === size ? "border-[var(--color-green)] bg-[var(--color-green)] text-white"
+                                                    : isAvailable ? "hover:border-black" : "cursor-not-allowed border-gray-300 text-gray-400 opacity-50"}`}
+                                    >
+                                        {size}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
 
-                    <button className="mt-8 w-full rounded-full bg-black py-5 text-white">Add to Cart</button>
+                    <Button
+                        disabled={!selectedSize}
+                        className="mt-8 w-full py-5"
+                    >
+                        Add to Cart
+                    </Button>
 
                     <div className="mt-12 space-y-6">
                         <div className="border-b pb-6">
