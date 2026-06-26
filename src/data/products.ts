@@ -22,6 +22,8 @@ export const products: Product[] = [
         title: "Nike Air Force 1 '07",
         subtitle: "Men's Shoes",
         description: "Classic everyday sneakers.",
+        longDescription:
+            "The Nike Air Force 1 '07 combines timeless basketball heritage with modern everyday comfort. Premium leather delivers durability and a clean look, while Nike Air cushioning provides lightweight support with every step. A durable rubber outsole offers reliable traction for daily wear.",
         genders: ["men"],
         sizes: ["7", "8", "9", "10", "11", "12"],
         colors: ["multicolor", "white"],
@@ -35,6 +37,8 @@ export const products: Product[] = [
         title: "Nike Air Max 90",
         subtitle: "Women's Shoes",
         description: "Legendary comfort and style.",
+        longDescription:
+            "The Nike Air Max 90 brings iconic style and all-day comfort to every look. Its visible Max Air unit delivers responsive cushioning with a retro aesthetic that stands out on any street. Reinforced overlays and a breathable upper make it as functional as it is fashionable.",
         genders: ["women"],
         sizes: ["6", "7", "8", "9", "10"],
         colors: ["multicolor"],
@@ -48,6 +52,8 @@ export const products: Product[] = [
         title: "Nike Dunk Low",
         subtitle: "Lifestyle Shoes",
         description: "Basketball icon turned streetwear.",
+        longDescription:
+            "Born on the basketball court, the Nike Dunk Low has become a cultural staple for streetwear enthusiasts. Its clean leather and suede upper offers a versatile canvas that pairs with any outfit, while a cushioned insole keeps you comfortable from morning to night. A durable rubber outsole provides everyday traction and lasting wearability.",
         genders: ["men", "women"],
         sizes: ["6", "7", "8", "9", "10", "11"],
         colors: ["brown", "white"],
@@ -61,6 +67,8 @@ export const products: Product[] = [
         title: "Nike Pegasus 41",
         subtitle: "Running Shoes",
         description: "Daily running companion.",
+        longDescription:
+            "The Nike Pegasus 41 is engineered to power through your daily miles with effortless ease. ReactX foam cushioning delivers a responsive, energized ride that keeps you moving step after step. A breathable mesh upper wraps your foot in lightweight support, making it the trusted choice for runners of all levels.",
         genders: ["men", "women"],
         sizes: ["7", "8", "9", "10", "11"],
         colors: ["black", "multicolor"],
@@ -74,6 +82,8 @@ export const products: Product[] = [
         title: "Air Jordan 1 Mid",
         subtitle: "Basketball Shoes",
         description: "Premium leather construction.",
+        longDescription:
+            "The Air Jordan 1 Mid carries the legacy of basketball's greatest icon into every moment. Premium leather construction provides long-lasting durability and a structured fit, while a padded collar and Nike Air unit deliver comfort for all-day wear. Its mid-top silhouette offers classic ankle support with a bold, distinctive look.",
         genders: ["men"],
         sizes: ["8", "9", "10", "11", "12"],
         colors: ["white", "multicolor"],
@@ -87,6 +97,8 @@ export const products: Product[] = [
         title: "Nike Court Vision Low",
         subtitle: "Women's Shoes",
         description: "Inspired by basketball heritage.",
+        longDescription:
+            "The Nike Court Vision Low draws on basketball's rich history to deliver clean, versatile everyday style. A leather upper with perforated toe and textured details keeps every step looking sharp, while a cushioned midsole provides comfortable all-day support. Lightweight and refined, it pairs effortlessly with any casual wardrobe.",
         genders: ["women"],
         sizes: ["6", "7", "8", "9"],
         colors: ["black"],
@@ -100,6 +112,8 @@ export const products: Product[] = [
         title: "Nike Blazer Mid '77",
         subtitle: "Lifestyle Shoes",
         description: "Retro design with modern comfort.",
+        longDescription:
+            "The Nike Blazer Mid '77 pays homage to the brand's basketball roots with a retro silhouette built for modern wear. A premium leather upper lends a vintage feel with long-lasting durability, while a vintage-inspired midsole adds a worn-in aesthetic. The padded collar and tongue deliver secure, cushioned comfort throughout the day.",
         genders: ["men", "women"],
         sizes: ["7", "8", "9", "10"],
         colors: ["multicolor", "black"],
@@ -113,6 +127,8 @@ export const products: Product[] = [
         title: "Nike Revolution 8",
         subtitle: "Kids' Shoes",
         description: "Lightweight for everyday play.",
+        longDescription:
+            "The Nike Revolution 8 is designed to keep up with kids at their most active. A lightweight foam midsole cushions every jump and sprint on the playground, while the flexible outsole moves naturally with growing feet. The easy pull-on tab and breathable upper make getting dressed fast and comfortable.",
         genders: ["kids"],
         sizes: ["3", "4", "5", "6"],
         colors: ["multicolor"],
@@ -126,6 +142,8 @@ export const products: Product[] = [
         title: "Nike Vomero 18",
         subtitle: "Running Shoes",
         description: "Maximum cushioning.",
+        longDescription:
+            "The Nike Vomero 18 sets the standard for premium daily running comfort. A thick stack of cushioned foam delivers plush, responsive support that absorbs impact mile after mile. The engineered mesh upper provides targeted breathability and structure, making every run feel smoother and more rewarding.",
         genders: ["men"],
         sizes: ["8", "9", "10", "11", "12"],
         colors: ["multicolor"],
@@ -139,6 +157,8 @@ export const products: Product[] = [
         title: "Nike Free Metcon 6",
         subtitle: "Training Shoes",
         description: "Built for gym workouts.",
+        longDescription:
+            "The Nike Free Metcon 6 is purpose-built for the demands of the gym floor. A reinforced heel and wide, flat base provide stability for heavy lifts, while forefoot flex grooves allow natural foot movement during dynamic exercises. Durable overlays wrap the heel for a secure, supportive fit through every set.",
         genders: ["women"],
         sizes: ["6", "7", "8", "9", "10"],
         colors: ["multicolor"],
@@ -152,6 +172,8 @@ export const products: Product[] = [
         title: "Nike Invincible 4",
         subtitle: "Road Running Shoes",
         description: "Soft ZoomX cushioning.",
+        longDescription:
+            "The Nike Invincible 4 offers an unmatched level of cushioning for high-mileage road runners. Thick ZoomX foam in the midsole provides extreme softness and energy return, cradling your foot from the first mile to the last. A wide base and rocker geometry promote a smooth, stable stride for every type of runner.",
         genders: ["women"],
         sizes: ["6", "7", "8", "9"],
         colors: ["multicolor"],
@@ -165,6 +187,8 @@ export const products: Product[] = [
         title: "Nike Air Max Plus",
         subtitle: "Lifestyle Shoes",
         description: "Bold Tuned Air cushioning.",
+        longDescription:
+            "The Nike Air Max Plus makes a bold statement with its aggressive wavy upper lines and signature Tuned Air cushioning. Multiple Air units target key pressure points to deliver responsive, all-day comfort on the move. Durable TPU overlays and a dynamic design make it a standout in any lifestyle rotation.",
         genders: ["men"],
         sizes: ["8", "9", "10", "11"],
         colors: ["white", "brown"],
@@ -178,6 +202,8 @@ export const products: Product[] = [
         title: "Nike Flex Runner 3",
         subtitle: "Kids' Shoes",
         description: "Easy slip-on design.",
+        longDescription:
+            "The Nike Flex Runner 3 is made for little ones who are always on the go. Its slip-on construction with a stretchy upper means kids can put them on and take them off independently, building confidence with every wear. A lightweight foam midsole cushions active feet while a flexible outsole bends naturally with every step.",
         genders: ["kids"],
         sizes: ["2", "3", "4", "5"],
         colors: ["brown"],
@@ -191,6 +217,8 @@ export const products: Product[] = [
         title: "Nike Air Max Dn",
         subtitle: "Lifestyle Shoes",
         description: "Dynamic Air cushioning.",
+        longDescription:
+            "The Nike Air Max Dn pushes Air cushioning into new territory with its Dynamic Air unit that delivers differentiated pressure across the foot. Two distinct zones — firmer in the heel, softer in the forefoot — create a responsive feel that adapts to your movement. A sleek, futuristic upper makes it as visually striking as it is comfortable.",
         genders: ["men", "women"],
         sizes: ["7", "8", "9", "10", "11"],
         colors: ["multicolor"],
@@ -204,6 +232,8 @@ export const products: Product[] = [
         title: "Nike Zoom Fly 6",
         subtitle: "Performance Running Shoes",
         description: "Fast and responsive.",
+        longDescription:
+            "The Nike Zoom Fly 6 is engineered for runners who demand race-ready speed in their daily training. A carbon fiber-infused plate drives explosive toe-off energy, while a thick ReactX foam base cushions every high-impact stride. The lightweight engineered upper wraps the foot securely for a confident, aerodynamic feel.",
         genders: ["men", "women"],
         sizes: ["7", "8", "9", "10", "11", "12"],
         colors: ["brown", "white", "multicolor"],

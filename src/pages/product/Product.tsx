@@ -5,11 +5,21 @@ import Breadcrumbs from "../../components/ProductsToolbar/Breadcrumbs.tsx";
 import {adultSizes, kidsSizes} from "../../data/sizes.ts";
 import {useState} from "react";
 import Button from "../../components/Button.tsx";
+import Accordion from "./Accordion.tsx";
+import {reviews} from "../../data/reviews.ts";
 
 const Product = () => {
     const { id } = useParams();
 
     const product = products.find((item) => item.id === id);
+    if (!product) {
+        return <h1>Product not found</h1>;
+    }
+
+    const productReviews = reviews.filter(
+        (review) => review.productId === product.id
+    );
+
 
     if (!product) {
         return <h1>Product not found</h1>;
@@ -95,18 +105,34 @@ const Product = () => {
                         Add to Cart
                     </Button>
 
-                    <div className="mt-12 space-y-6">
-                        <div className="border-b pb-6">
-                            <h3 className="text-h3"> Product Details</h3>
-                        </div>
+                    <div className="mt-12">
 
-                        <div className="border-b pb-6">
-                            <h3 className="text-h3">Shipping & Returns</h3>
-                        </div>
+                        <Accordion title="Product Details"> {product.longDescription} </Accordion>
 
-                        <div className="border-b pb-6">
-                            <h3 className="text-h3">Reviews</h3>
-                        </div>
+                        <Accordion title="Shipping & Returns">
+                            <ul>
+                                <li>Free standard shipping on orders over $50.</li>
+                                <li>Free 30-day returns.</li>
+                            </ul>
+                        </Accordion>
+
+                        <Accordion title={`Reviews (${productReviews.length})`}>
+                            {productReviews.map((review) => (
+                                <div
+                                    key={review.id}
+                                    className="border-b border-[var(--color-light-300)] py-4 last:border-0"
+                                >
+                                    <div className="mb-2 flex items-center justify-between">
+                                        <h4 className="font-medium text-[var(--color-dark-900)]">{review.title}</h4>
+                                        <span>{"★".repeat(review.rating)}</span>
+                                    </div>
+
+                                    <p className="text-body text-gray-700">{review.comment}</p>
+
+                                    <p className="mt-3 text-caption text-[var(--color-dark-700)]">{review.author} • {review.date}</p>
+                                </div>
+                            ))}
+                        </Accordion>
                     </div>
                 </div>
             </div>

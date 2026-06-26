@@ -7,7 +7,9 @@ export type Product = {
 
     title: string;
     subtitle: string;
+
     description?: string;
+    longDescription: string;
 
     imageSrc: string;
     price: number;
@@ -15,7 +17,6 @@ export type Product = {
     genders: Gender[];
     sizes: string[];
     colors: string[];
-
 
     badge?: {
         label: string;
@@ -55,4 +56,17 @@ export type SelectedFilters = {
     color: string[];
     price: string[];
     size: string[];
+};
+
+export type Review = {
+    id: string;
+    productId: string;
+
+    author: string;
+    rating: number;
+
+    title: string;
+    comment: string;
+
+    date: string;
 };
