@@ -2,6 +2,8 @@ import { useState } from "react";
 import Logo from "../assets/logo-black.svg";
 import { Twirl } from "hamburger-react";
 import { Search, ShoppingBag } from "lucide-react";
+import {Link} from "react-router-dom";
+import {useCart} from "../context/CartContext.tsx";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +19,14 @@ const Header = () => {
         { label: "Contact", href: "/contact" },
     ];
 
+    const { cartItems } = useCart();
+    const totalItems = cartItems.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+
     return (
         <>
-
             <header className="fixed top-0 left-0 w-full bg-[var(--color-light-100)] z-50">
                 <div className="flex h-[72px] items-center justify-between mx-auto max-w-[1600px] page-spacing">
                     <a href="/" className="relative z-50 flex items-center">
@@ -37,13 +44,13 @@ const Header = () => {
 
                     <nav className="hidden md:flex items-center gap-10">
                         {links.map((link) => (
-                            <a
+                            <Link
                                 key={link.label}
-                                href={link.href}
+                                to={link.href}
                                 className="text-sm font-medium text-hover"
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
 
@@ -69,10 +76,13 @@ const Header = () => {
                             />
                         </div>
 
-                        <button className="flex items-center gap-2 text-hover">
+                        <Link
+                            to="/cart"
+                            className="flex items-center gap-2 text-hover"
+                        >
                             <ShoppingBag size={20} />
-                            <span>0</span>
-                        </button>
+                            <span>{totalItems}</span>
+                        </Link>
                     </div>
                 </div>
 
@@ -82,14 +92,13 @@ const Header = () => {
                 >
                     <div className="space-y-1 px-4 py-6">
                         {links.map((link) => (
-                            <a
+                            <Link
                                 key={link.label}
-                                href={link.href}
-                                className="block py-3 text-base font-medium "
-                                onClick={() => setIsOpen(false)}
+                                to={link.href}
+                                className="block py-3 text-base font-medium"
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
 
                         <div className="mt-6 border-t border-[var(--color-light-300)] pt-6 flex flex-col gap-4 items-start text-left">

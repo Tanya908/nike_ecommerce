@@ -6,6 +6,7 @@ import Kids from "../pages/сategoryPage/Kids.tsx";
 import Collection from "../components/Collection.tsx";
 import Contact from "../components/Contact.tsx";
 import Product from "../pages/product/Product.tsx";
+import CartPage from "../pages/CartPage.tsx";
 
 
 
@@ -19,6 +20,7 @@ const AppRouter = () => {
             <Route path="/collections" element={<Collection/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/products/:id" element={<Product />} />
+            <Route path="/cart" element={<CartPage />} />
         </Routes>
     );
 };
