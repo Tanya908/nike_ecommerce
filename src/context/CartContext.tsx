@@ -1,6 +1,7 @@
 import {
     createContext,
     useContext,
+    useEffect,
     useState,
     type ReactNode,
 } from "react";
@@ -32,7 +33,19 @@ type CartProviderProps = {
 export const CartProvider = ({
                                  children,
                              }: CartProviderProps) => {
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+    const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+        const savedCart = localStorage.getItem("cart");
+
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cartItems)
+        );
+    }, [cartItems]);
 
     const addToCart = (productId: string, size: string) => {
         console.log(productId, size);

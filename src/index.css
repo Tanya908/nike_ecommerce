@@ -82,6 +82,12 @@
     line-height:var(--text-heading-3--line-height);
 }
 
+@utility text-lead {
+    font-size: var(--text-lead);
+    font-weight:var(--text-lead--font-weight);
+    line-height:var(--text-lead--line-height);
+}
+
 @layer utilities {
 
     .page-spacing{
