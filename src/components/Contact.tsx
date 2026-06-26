@@ -1,6 +1,30 @@
+import { useForm } from "react-hook-form";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Button from "./Button";
+
+type FormValues = {
+    name: string;
+    email: string;
+    message: string;
+};
 
 const Contact = () => {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isValid },
+    } = useForm<FormValues>({ mode: "onTouched" });
+
+    const onSubmit = async (data: FormValues) => {
+        try {
+            console.table(data);
+            reset();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div className="page-spacing my-12 max-w-5xl">
             <h1 className="mb-3 text-h1">
@@ -38,31 +62,65 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <form className="space-y-5">
-                    <input
-                        type="text"
-                        placeholder="Your Name"
-                        className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
-                    />
+                <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
+                            {...register("name", {
+                                required: "Name is required",
+                                validate: (v) =>
+                                    /^[\p{L}\s'-]+$/u.test(v.trim()) ||
+                                    "Name may only contain letters, apostrophes, spaces, and hyphens",
+                            })}
+                        />
+                        {errors.name && (
+                            <p className="error-message">{errors.name.message}</p>
+                        )}
+                    </div>
 
-                    <input
-                        type="email"
-                        placeholder="Email Address"
-                        className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
-                    />
+                    <div>
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
+                            {...register("email", {
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: "Enter a valid email address",
+                                },
+                            })}
+                        />
+                        {errors.email && (
+                            <p className="error-message">{errors.email.message}</p>
+                        )}
+                    </div>
 
-                    <textarea
-                        rows={6}
-                        placeholder="Message"
-                        className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none resize-none"
-                    />
+                    <div>
+                        <textarea
+                            rows={6}
+                            placeholder="Message"
+                            className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none resize-none"
+                            {...register("message", {
+                                required: "Message is required",
+                                validate: (v) =>
+                                    v.trim().length > 0 || "Message cannot be blank",
+                            })}
+                        />
+                        {errors.message && (
+                            <p className="error-message">{errors.message.message}</p>
+                        )}
+                    </div>
 
-                    <button
+                    <Button
                         type="submit"
-                        className="rounded-full bg-black px-8 py-4 text-white transition hover:opacity-90"
+                        className="px-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={!isValid}
                     >
                         Send Message
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>
