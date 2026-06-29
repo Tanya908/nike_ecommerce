@@ -1,21 +1,15 @@
-import { useForm } from 'react-hook-form';
+import { useFormContext } from "react-hook-form";
 import {emailValidation} from "../../utils/validation/email.ts";
 import {usePhoneField} from "../../hooks/usePhoneField.ts";
-
-type ContactFormValues = {
-    email: string;
-    phone: string;
-};
+import type { CheckoutFormValues } from "../../types/checkout";
 
 const ContactForm = () => {
-    const {register, handleSubmit, formState: { errors },} = useForm<ContactFormValues>({ mode: 'onTouched' });
 
-    const onSubmit = (data: ContactFormValues) => { console.log(data) };
+    const {register, formState: { errors },} = useFormContext<CheckoutFormValues>();
 
     const phoneRegister = usePhoneField(register, "phone");
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
             <section className="rounded-2xl border border-[var(--color-light-300)] p-8">
                 <h2 className="mb-8 text-h3">
                     Contact
@@ -61,7 +55,6 @@ const ContactForm = () => {
 
                 </div>
             </section>
-        </form>
     );
 };
 
