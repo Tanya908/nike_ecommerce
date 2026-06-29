@@ -6,6 +6,15 @@
 A modern, responsive e-commerce application built with **React** and **TypeScript**. The project simulates a real online shopping experience, including product browsing, filtering, shopping cart management, and a complete checkout flow with form validation.
 
 ---
+## Live Demo
+
+You can explore the live version of the project here:
+
+🔗 **https://nike-ecommerce-umber.vercel.app/**
+
+The application is fully responsive and includes product browsing, filtering, search, shopping cart management, and a complete checkout flow with form validation.
+
+---
 
 # Tech Stack
 
