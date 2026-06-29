@@ -6,17 +6,25 @@ type SearchDropdownProps = {
     search: string;
     results: Product[];
     onClose: () => void;
+    mobile?: boolean;
 };
 
 const SearchDropdown = ({
                             search,
                             results,
                             onClose,
+                            mobile = false,
                         }: SearchDropdownProps) => {
     if (!search.trim()) return null;
 
     return (
-        <div className="absolute top-14 left-0 w-80 overflow-hidden rounded-2xl border border-[var(--color-light-300)] bg-white shadow-xl">
+        <div
+            className={`overflow-hidden rounded-2xl border border-[var(--color-light-300)] bg-white shadow-xl ${
+                mobile
+                    ? "mt-3 w-full"
+                    : "absolute left-0 top-full mt-2 w-80 z-50"
+            }`}
+        >
 
             {results.length > 0 ? (
                 results.map((product) => (

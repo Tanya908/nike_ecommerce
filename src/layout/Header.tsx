@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Logo from "../assets/logo-black.svg";
 import { Twirl } from "hamburger-react";
 import { Search, ShoppingBag } from "lucide-react";
@@ -35,13 +35,26 @@ const Header = () => {
         0
     );
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () =>
+            window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <>
             <header className="fixed top-0 left-0 w-full bg-[var(--color-light-100)] z-50">
                 <div className="flex h-[72px] items-center justify-between mx-auto max-w-[1600px] page-spacing">
-                    <a href="/" className="relative z-50 flex items-center">
+                    <Link to="/" className="relative z-50 flex items-center">
                         <img src={Logo} alt="Nike" className="w-8 h-8" />
-                    </a>
+                    </Link>
 
                     <div className="md:hidden rounded-md hover:bg-[var(--color-light-200)] active:bg-[var(--color-light-200)] p-2 z-50">
                         <Twirl
@@ -110,21 +123,26 @@ const Header = () => {
                 </div>
 
                 <div
-                    className={`fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] bg-light-100 z-40 transition-transform duration-300 ease-in-out 
-                                md:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
+                    className={`fixed inset-0 pt-[72px] bg-[var(--color-light-100)] z-40 transition-transform duration-300 md:hidden ${
+                        isOpen
+                            ? "translate-y-0"
+                            : "-translate-y-full"
+                    }`}
                 >
                     <div className="space-y-1 px-4 py-6">
                         {links.map((link) => (
                             <Link
                                 key={link.label}
                                 to={link.href}
+                                onClick={() => setIsOpen(false)}
                                 className="block py-3 text-base font-medium"
                             >
                                 {link.label}
                             </Link>
                         ))}
 
-                        <div className="mt-6 border-t border-[var(--color-light-300)] pt-6 flex flex-col gap-4 items-start text-left">
+                        <div className="mt-6 border-t border-[var(--color-light-300)] pt-6">
+
                             <input
                                 type="search"
                                 placeholder="Search products..."
@@ -132,7 +150,28 @@ const Header = () => {
                                 onChange={(e) => setSearch(e.target.value)}
                                 className="w-full rounded-full border border-[var(--color-light-300)] px-4 py-3 outline-none"
                             />
-                            <button onClick={() => setIsOpen(false)}>My Cart (0)</button>
+
+                            {search && (
+                                <SearchDropdown
+                                    mobile
+                                    search={search}
+                                    results={searchResults}
+                                    onClose={() => {
+                                        setSearch("");
+                                        setIsOpen(false);
+                                    }}
+                                />
+                            )}
+
+                            <Link
+                                to="/cart"
+                                onClick={() => setIsOpen(false)}
+                                className="mt-6 flex items-center gap-2"
+                            >
+                                <ShoppingBag size={20} />
+                                <span>My Cart ({totalItems})</span>
+                            </Link>
+
                         </div>
                     </div>
                 </div>
