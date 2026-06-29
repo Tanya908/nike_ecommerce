@@ -13,29 +13,27 @@ const PaymentForm = () => {
                 <input
                     type="text"
                     placeholder="Card Number"
-                    className="w-full rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                    className="checkout-input"
                 />
 
                 <div className="grid gap-6 md:grid-cols-2">
-
                     <input
                         type="text"
                         placeholder="MM / YY"
-                        className="rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                        className="checkout-input"
                     />
 
                     <input
                         type="text"
                         placeholder="CVV"
-                        className="rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                        className="checkout-input"
                     />
-
                 </div>
 
                 <input
                     type="text"
                     placeholder="Cardholder Name"
-                    className="w-full rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                    className="checkout-input"
                 />
 
                 <Button className="mt-4 w-full py-4">

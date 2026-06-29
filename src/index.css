@@ -101,4 +101,9 @@
     .error-message{
         @apply mt-1 text-sm text-red-500
     }
+
+    .checkout-input{
+        @apply w-full rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none
+               transition focus:border-[var(--color-dark-900)]
+    }
 }

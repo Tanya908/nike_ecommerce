@@ -1,5 +1,20 @@
 import Button from "../Button";
 
+const summaryItems = [
+    {
+        label: "Subtotal",
+        value: "$320.00",
+    },
+    {
+        label: "Shipping",
+        value: "Free",
+    },
+    {
+        label: "Taxes",
+        value: "$28.80",
+    },
+];
+
 const OrderSummary = () => {
     return (
         <aside className="sticky top-28 rounded-2xl border border-[var(--color-light-300)] p-8 h-fit">
@@ -9,22 +24,15 @@ const OrderSummary = () => {
             </h2>
 
             <div className="space-y-4">
-
-                <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span>$320.00</span>
-                </div>
-
-                <div className="flex justify-between">
-                    <span>Shipping</span>
-                    <span>Free</span>
-                </div>
-
-                <div className="flex justify-between">
-                    <span>Taxes</span>
-                    <span>$28.80</span>
-                </div>
-
+                {summaryItems.map((item) => (
+                    <div
+                        key={item.label}
+                        className="flex justify-between"
+                    >
+                        <span>{item.label}</span>
+                        <span>{item.value}</span>
+                    </div>
+                ))}
             </div>
 
             <div className="my-8 border-t border-[var(--color-light-300)]" />

@@ -15,7 +15,7 @@ const ContactForm = () => {
                     <input
                         type="email"
                         placeholder="john@example.com"
-                        className="w-full rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                        className="checkout-input"
                     />
                 </div>
 
@@ -27,7 +27,7 @@ const ContactForm = () => {
                     <input
                         type="tel"
                         placeholder="+1 (555) 000-0000"
-                        className="w-full rounded-xl border border-[var(--color-light-300)] px-4 py-4 outline-none transition focus:border-[var(--color-dark-900)]"
+                        className="checkout-input"
                     />
                 </div>
 
