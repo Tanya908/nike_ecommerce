@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "./Button";
 import {emailValidation} from "../utils/validation/email.ts";
+import { createNameValidation } from "../utils/validation/name.ts";
 
 type FormValues = {
     name: string;
@@ -69,12 +70,10 @@ const Contact = () => {
                             type="text"
                             placeholder="Your Name"
                             className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
-                            {...register("name", {
-                                required: "Name is required",
-                                validate: (v) =>
-                                    /^[\p{L}\s'-]+$/u.test(v.trim()) ||
-                                    "Name may only contain letters, apostrophes, spaces, and hyphens",
-                            })}
+                            {...register("name", createNameValidation(
+                                "Name is required",
+                                "Name may only contain letters, apostrophes, spaces, and hyphens"
+                            ))}
                         />
                         {errors.name && (
                             <p className="error-message">{errors.name.message}</p>

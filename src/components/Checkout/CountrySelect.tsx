@@ -10,11 +10,13 @@ type Option = {
 type CountrySelectProps = {
     value: Option | null;
     onChange: (country: Option | null) => void;
+    isError?: boolean;
 };
 
 const CountrySelect = ({
                            value,
                            onChange,
+                           isError,
                        }: CountrySelectProps) => {
     const options = useMemo(
         () =>
@@ -36,9 +38,11 @@ const CountrySelect = ({
             classNames={{
                 control: ({ isFocused }) =>
                     `w-full rounded-xl border px-4 py-4 outline-none transition ${
-                        isFocused
-                            ? "border-[var(--color-dark-900)]"
-                            : "border-[var(--color-light-300)]"
+                        isError
+                            ? "border-[var(--color-red)]"
+                            : isFocused
+                                ? "border-[var(--color-dark-900)]"
+                                : "border-[var(--color-light-300)]"
                     }`,
                 valueContainer: () => "p-0",
                 input: () => "m-0 p-0",

@@ -11,12 +11,14 @@ type CitySelectProps = {
     countryCode: string | undefined;
     value: Option | null;
     onChange: (city: Option | null) => void;
+    isError?: boolean;
 };
 
 const CitySelect = ({
                         countryCode,
                         value,
                         onChange,
+                        isError,
                     }: CitySelectProps) => {
 
     const options = useMemo(() => {
@@ -55,9 +57,11 @@ const CitySelect = ({
             classNames={{
                 control: ({ isFocused }) =>
                     `w-full rounded-xl border px-4 py-4 outline-none transition ${
-                        isFocused
-                            ? "border-[var(--color-dark-900)]"
-                            : "border-[var(--color-light-300)]"
+                        isError
+                            ? "border-[var(--color-red)]"
+                            : isFocused
+                                ? "border-[var(--color-dark-900)]"
+                                : "border-[var(--color-light-300)]"
                     }`,
 
                 valueContainer: () => "p-0",

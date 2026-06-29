@@ -45,7 +45,7 @@ const OrderSummary = () => {
 
             </div>
 
-            <Button className="mt-8 w-full py-4">
+            <Button type="submit" className="mt-8 w-full py-4">
                 Place Order
             </Button>
 
