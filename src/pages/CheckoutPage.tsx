@@ -4,8 +4,11 @@ import PaymentForm from "../components/Checkout/PaymentForm.tsx";
 import OrderSummary from "../components/Checkout/OrderSummary.tsx";
 import {FormProvider,useForm} from "react-hook-form";
 import type { CheckoutFormValues } from "../types/checkout";
+import {useNavigate} from "react-router-dom";
+import {useCart} from "../context/CartContext.tsx";
 
 const CheckoutPage = () => {
+
     const methods = useForm<CheckoutFormValues>({
         mode: "onTouched",
         defaultValues: {
@@ -14,9 +17,17 @@ const CheckoutPage = () => {
         },
     });
 
+    const navigate = useNavigate();
+    const { clearCart } = useCart();
+
     const onSubmit = (data: CheckoutFormValues) => {
         console.log(data);
+
+        clearCart();
+
+        navigate("/order-success");
     };
+
     return (
         <section className="page-spacing py-12">
 
