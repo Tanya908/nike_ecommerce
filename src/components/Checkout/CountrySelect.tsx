@@ -29,6 +29,7 @@ const CountrySelect = ({
 
     return (
         <Select
+            inputId="country"
             unstyled
             options={options}
             value={value}

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Button from "./Button";
+import Button from "../components/Button.tsx";
 import {emailValidation} from "../utils/validation/email.ts";
 import { createNameValidation } from "../utils/validation/name.ts";
 
@@ -67,6 +67,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
                     <div>
                         <input
+                            id="text"
                             type="text"
                             placeholder="Your Name"
                             className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
@@ -82,6 +83,7 @@ const Contact = () => {
 
                     <div>
                         <input
+                            id="email"
                             type="email"
                             placeholder="Email Address"
                             className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"

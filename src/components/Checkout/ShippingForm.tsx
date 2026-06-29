@@ -29,11 +29,15 @@ const ShippingForm = () => {
             <div className="space-y-6">
 
                 <div>
-                    <label className="mb-2 block text-body-medium">
+                    <label
+                        htmlFor="fullName"
+                        className="mb-2 block text-body-medium"
+                    >
                         Full Name
                     </label>
 
                     <input
+                        id="fullName"
                         type="text"
                         placeholder="John Doe"
                         className={`checkout-input${errors.fullName ? " !border-[var(--color-red)]" : ""}`}
@@ -46,11 +50,15 @@ const ShippingForm = () => {
                 </div>
 
                 <div>
-                    <label className="mb-2 block text-body-medium">
+                    <label
+                        htmlFor="streetAddress"
+                        className="mb-2 block text-body-medium"
+                    >
                         Street Address
                     </label>
 
                     <input
+                        id="streetAddress"
                         type="text"
                         placeholder="123 Main St"
                         className={`checkout-input${errors.streetAddress ? " !border-[var(--color-red)]" : ""}`}
@@ -63,7 +71,10 @@ const ShippingForm = () => {
                 </div>
 
                 <div>
-                    <label className="mb-2 block text-body-medium">
+                    <label
+                        className="mb-2 block text-body-medium"
+                        htmlFor="Country"
+                    >
                         Country
                     </label>
 
@@ -91,7 +102,10 @@ const ShippingForm = () => {
                 <div className="grid gap-6 md:grid-cols-2">
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            htmlFor="city"
+                            className="mb-2 block text-body-medium"
+                        >
                             City
                         </label>
 
@@ -115,11 +129,15 @@ const ShippingForm = () => {
                     </div>
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            className="mb-2 block text-body-medium"
+                            htmlFor="zipCode"
+                        >
                             ZIP Code
                         </label>
 
                         <input
+                            id="zipCode"
                             type="text"
                             placeholder="10001"
                             className={`checkout-input${errors.zipCode ? " !border-[var(--color-red)]" : ""}`}

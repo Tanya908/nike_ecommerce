@@ -7,6 +7,7 @@ import {filterGroups} from "../../data/filters.ts";
 import ProductsToolbar from "../../components/ProductsToolbar/ProductsToolBar.tsx";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid.tsx";
 import Sidebar from "../../components/Sidebar/Sidebar.tsx";
+import {adultSizes, kidsSizes} from "../../data/sizes.ts";
 
 type CategoryPageProps = {
     gender: Gender;
@@ -30,11 +31,30 @@ const CategoryPage = ({
     const filteredProducts = filterProducts(products, selectedFilters);
     const sortedProducts = sortProducts(filteredProducts, sortOption);
 
+    const sidebarFilters = filterGroups.map((group) => {
+        if (group.key !== "size") {
+            return group;
+        }
+
+        const sizes =
+            gender === "kids"
+                ? kidsSizes
+                : adultSizes;
+
+        return {
+            ...group,
+            options: sizes.map((size) => ({
+                value: size,
+                label: size,
+            })),
+        };
+    });
+
     return (
         <div className="page-spacing my-8 flex gap-10">
             <Sidebar
                 title={`New (${filteredProducts.length})`}
-                filters={filterGroups}
+                filters={sidebarFilters}
                 selectedFilters={selectedFilters}
                 setSelectedFilters={setSelectedFilters}
             />

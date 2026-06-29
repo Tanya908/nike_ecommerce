@@ -1,12 +1,15 @@
 import Button from "../Button";
 import { useCart } from "../../context/CartContext.tsx";
 import { products } from "../../data/products";
+import {useFormContext} from "react-hook-form";
+import type {CheckoutFormValues} from "../../types/checkout.ts";
 
 const FREE_SHIPPING_THRESHOLD = 100;
 const SHIPPING_COST = 15;
 
 const OrderSummary = () => {
     const { cartItems } = useCart();
+    const {formState: { isValid },} = useFormContext<CheckoutFormValues>();
 
     const subtotal = cartItems.reduce((total, item) => {
         const product = products.find(
@@ -107,6 +110,7 @@ const OrderSummary = () => {
             </div>
 
             <Button
+                disabled={!isValid || cartItems.length === 0}
                 type="submit"
                 className="mt-8 w-full py-4"
             >

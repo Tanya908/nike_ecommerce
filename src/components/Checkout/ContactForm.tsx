@@ -18,11 +18,15 @@ const ContactForm = () => {
                 <div className="space-y-6">
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            htmlFor="email"
+                            className="mb-2 block text-body-medium"
+                        >
                             Email Address
                         </label>
 
                         <input
+                            id="email"
                             type="email"
                             placeholder="john@example.com"
                             className={`checkout-input${errors.email ? ' !border-[var(--color-red)]' : ''}`}
@@ -35,11 +39,15 @@ const ContactForm = () => {
                     </div>
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            htmlFor="tel"
+                            className="mb-2 block text-body-medium"
+                        >
                             Phone Number
                         </label>
 
                         <input
+                            id="tel"
                             type="tel"
                             placeholder="Phone number"
                             className={`checkout-input${errors.phone ? " !border-[var(--color-red)]" : ""}`}

@@ -22,11 +22,15 @@ const PaymentForm = () => {
                 <div className="space-y-6">
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            htmlFor="cardNumber"
+                            className="mb-2 block text-body-medium"
+                        >
                             Card Number
                         </label>
 
                         <input
+                            id="cardNumber"
                             type="text"
                             placeholder="1234 5678 9012 3456"
                             maxLength={19}
@@ -42,11 +46,15 @@ const PaymentForm = () => {
                     <div className="grid gap-6 md:grid-cols-2">
 
                         <div>
-                            <label className="mb-2 block text-body-medium">
+                            <label
+                                htmlFor="expiry"
+                                className="mb-2 block text-body-medium"
+                            >
                                 Expiration Date
                             </label>
 
                             <input
+                                id="expiry"
                                 type="text"
                                 placeholder="MM / YY"
                                 maxLength={7}
@@ -60,11 +68,15 @@ const PaymentForm = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-body-medium">
+                            <label
+                                htmlFor="cvv"
+                                className="mb-2 block text-body-medium"
+                            >
                                 CVV
                             </label>
 
                             <input
+                                id="cvv"
                                 type="password"
                                 placeholder="CVV"
                                 maxLength={4}
@@ -80,11 +92,15 @@ const PaymentForm = () => {
                     </div>
 
                     <div>
-                        <label className="mb-2 block text-body-medium">
+                        <label
+                            htmlFor="cardholder"
+                            className="mb-2 block text-body-medium"
+                        >
                             Cardholder Name
                         </label>
 
                         <input
+                            id="cardholder"
                             type="text"
                             placeholder="John Doe"
                             className={`checkout-input${errors.cardholder ? " !border-[var(--color-red)]" : ""}`}

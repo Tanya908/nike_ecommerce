@@ -11,6 +11,7 @@ import {useCart} from "../../context/CartContext.tsx";
 
 const Product = () => {
     const { addToCart } = useCart();
+    const [addedToCart, setAddedToCart] = useState(false);
 
     const { id } = useParams();
 
@@ -76,8 +77,6 @@ const Product = () => {
 
                     <p className="mt-6 text-h3"> ${product.price} </p>
 
-                    <p className="mt-2 font-medium text-green-700"> Extra 20% off with code SPORT </p>
-
                     <div className="mt-10">
                         <h3 className="mb-5 text-body-medium">
                             Select Size
@@ -107,11 +106,27 @@ const Product = () => {
                             if (!selectedSize) return;
 
                             addToCart(product.id, selectedSize);
+
+                            setAddedToCart(true);
+
+                            setTimeout(() => {
+                                setAddedToCart(false);
+                            }, 2000);
                         }}
                         className="mt-8 w-full py-5"
                     >
                         Add to Cart
                     </Button>
+
+                    <p
+                        className={`mt-3 text-center text-sm text-[var(--color-green)] transition-all duration-300 ${
+                            addedToCart
+                                ? "opacity-100 translate-y-0"
+                                : "pointer-events-none -translate-y-1 opacity-0"
+                        }`}
+                    >
+                        ✓ Item added to your cart
+                    </p>
 
                     <div className="mt-12">
 
@@ -119,7 +134,7 @@ const Product = () => {
 
                         <Accordion title="Shipping & Returns">
                             <ul>
-                                <li>Free standard shipping on orders over $50.</li>
+                                <li>Free standard shipping on orders over $100.</li>
                                 <li>Free 30-day returns.</li>
                             </ul>
                         </Accordion>

@@ -2,12 +2,6 @@ import type { FilterGroup, PriceRange } from "../types/product";
 
 export const priceRanges: PriceRange[] = [
     {
-        value: "25-50",
-        label: "$25 - $50",
-        min: 25,
-        max: 50,
-    },
-    {
         value: "50-100",
         label: "$50 - $100",
         min: 50,

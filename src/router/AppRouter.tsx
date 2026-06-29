@@ -3,12 +3,12 @@ import Home from "../pages/home/Home.tsx";
 import Men from "../pages/сategoryPage/Men.tsx";
 import Women from "../pages/сategoryPage/Women.tsx";
 import Kids from "../pages/сategoryPage/Kids.tsx";
-import Collection from "../components/Collection.tsx";
-import Contact from "../components/Contact.tsx";
 import Product from "../pages/product/Product.tsx";
 import CartPage from "../pages/CartPage.tsx";
 import CheckoutPage from "../pages/CheckoutPage.tsx";
 import OrderSuccessPage from "../pages/OrderSuccessPage.tsx";
+import Collection from "../pages/Collection.tsx";
+import Contact from "../pages/Contact.tsx";
 
 
 
