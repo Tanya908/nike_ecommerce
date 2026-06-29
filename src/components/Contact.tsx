@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "./Button";
+import {emailValidation} from "../utils/validation/email.ts";
 
 type FormValues = {
     name: string;
@@ -85,13 +86,7 @@ const Contact = () => {
                             type="email"
                             placeholder="Email Address"
                             className="w-full rounded-lg border border-[var(--color-light-300)] p-4 outline-none"
-                            {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: "Enter a valid email address",
-                                },
-                            })}
+                            {...register("email", emailValidation)}
                         />
                         {errors.email && (
                             <p className="error-message">{errors.email.message}</p>
