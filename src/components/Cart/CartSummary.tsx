@@ -1,6 +1,7 @@
 import { products } from "../../data/products";
 import { useCart } from "../../context/CartContext";
 import Button from "../Button";
+import {Link} from "react-router-dom";
 
 const CartSummary = () => {
     const { cartItems } = useCart();
@@ -51,7 +52,9 @@ const CartSummary = () => {
                 </div>
             </div>
 
-            <Button className="mt-8 w-full py-4">Proceed to Checkout</Button>
+            <Link to="/checkout">
+                <Button className="mt-8 w-full py-4"> Proceed to Checkout </Button>
+            </Link>
 
             <p className="mt-4 text-center text-caption text-[var(--color-dark-600)]">Taxes calculated at checkout.</p>
         </aside>
