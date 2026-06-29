@@ -59,6 +59,7 @@ const Header = () => {
                     <div className="md:hidden rounded-md hover:bg-[var(--color-light-200)] active:bg-[var(--color-light-200)] p-2 z-50">
                         <Twirl
                             toggled={isOpen}
+                            aria-label="Toggle navigation menu"
                             toggle={setIsOpen}
                             size={24}
                             color="#1f2937"
